@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,700;1,700&family=DM+Mono:wght@400;500&display=block");
+
+:root {
+  --bg: #050505;
+  --bg2: #0b0a08;
+  --panel: #0d0c0a;
+  --panel2: #14120e;
+  --ink: #efe6d2;
+  --muted: #8f8570;
+  --line: #2b261c;
+  --grid: rgba(217, 181, 106, 0.035);
+  --c1: #d9b56a;
+  --c2: #8fbf9a;
+  --c3: #f3d58a;
+  --c4: #c98f6b;
+  --c5: #86b3b8;
+  --c6: #d8c7a0;
+  --accent: var(--c1);
+  --radius: 3px;
+  --bw: 1px;
+  --shadow: 0 20px 40px -26px rgba(0, 0, 0, 1);
+  --glow: 0.9;
+  --font-display: "Cormorant Garamond", "Garamond", Georgia, serif;
+  --font-body: "DM Mono", Menlo, monospace;
+  --font-mono: "DM Mono", Menlo, monospace;
+  --title-size: 66px;
+  --title-weight: 700;
+  --title-case: none;
+  --title-track: 0.005em;
+  --label-case: uppercase;
+  --code-bg: #080705;
+  --code-ink: #e3d6b8;
+  --code-accent: #f3d58a;
+}
+
+.mi-page.mi-grid-bg { background-size: 60px 60px; }
+.mi-page::before, .mi-page::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.mi-page::before {
+  background-image:
+    radial-gradient(1.6px 1.6px at 31px 47px, rgba(243, 213, 138, 0.95), transparent),
+    radial-gradient(1px 1px at 113px 19px, rgba(217, 181, 106, 0.9), transparent),
+    radial-gradient(1.2px 1.2px at 71px 131px, rgba(243, 213, 138, 0.7), transparent),
+    radial-gradient(0.9px 0.9px at 157px 97px, rgba(143, 191, 154, 0.8), transparent),
+    radial-gradient(2.2px 2.2px at 181px 163px, rgba(243, 213, 138, 0.5), transparent),
+    radial-gradient(1px 1px at 17px 181px, rgba(217, 181, 106, 0.8), transparent);
+  background-size: 197px 197px, 149px 149px, 233px 233px, 173px 173px, 281px 281px, 127px 127px;
+  -webkit-mask: radial-gradient(80% 70% at 50% 60%, #000 30%, rgba(0, 0, 0, 0.35));
+  mask: radial-gradient(80% 70% at 50% 60%, #000 30%, rgba(0, 0, 0, 0.35));
+  animation: gd-shimmer 4s ease-in-out infinite;
+}
+.mi-page::after {
+  background:
+    radial-gradient(40% 26% at 50% 104%, color-mix(in oklab, var(--accent) 22%, transparent), transparent 75%),
+    repeating-radial-gradient(circle at 50% 118%, transparent 0 139px, rgba(217, 181, 106, 0.09) 139px 140px, transparent 140px 180px);
+}
+@keyframes gd-shimmer { 0%, 100% { opacity: 0.5; translate: 0 0; } 50% { opacity: 1; translate: 0 -6px; } }
+
+.mi-title { color: #f5ecd8; }
+.mi-title em { font-style: italic; background: linear-gradient(180deg, #f7e2a6, var(--accent)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.mi-crumb, .mi-sub { color: var(--c1); }
+.mi-sub { letter-spacing: 0.14em; font-size: 16px; }
+.mi-rule { height: 1px; background: linear-gradient(90deg, transparent, rgba(217, 181, 106, 0.45) 12%, rgba(217, 181, 106, 0.45) 88%, transparent); }
+.mi-rule::after { height: 1px; top: 0; box-shadow: 0 0 8px var(--accent); }
+.mi-card { background: linear-gradient(180deg, rgba(217, 181, 106, 0.045), transparent 30%), var(--panel); border-color: rgba(217, 181, 106, 0.2); }
+.mi-card h3 { font-size: 36px; font-weight: 700; color: #f3e8cf; }
+.mi-label { letter-spacing: 0.16em; }
+.mi-stat { background: transparent; border-color: rgba(217, 181, 106, 0.22); box-shadow: none; }
+.mi-stat-v { font-size: 60px; font-weight: 700; font-variant-numeric: lining-nums tabular-nums; }
+.mi-row { background: #100e0b; border-color: #221e16; }
+.mi-code { border: 1px solid rgba(217, 181, 106, 0.16); }
+.mi-edge { stroke: rgba(217, 181, 106, 0.18); stroke-width: 1; }
+.mi-beam { stroke-width: 2; filter: drop-shadow(0 0 5px var(--item, var(--accent))); }
+.mi-bar { height: 4px; background: #231f17; }
+.mi-foot .mark { font-family: var(--font-display); font-style: italic; font-size: 22px; color: var(--c3); }

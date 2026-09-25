@@ -311,6 +311,30 @@ Generate professional infographics with 21 layout types and 21 visual styles. An
 | ![knolling](./screenshots/infographic-styles/knolling.webp) | ![lego-brick](./screenshots/infographic-styles/lego-brick.webp) | |
 | knolling | lego-brick | |
 
+#### baoyu-infographic-motion
+
+Animated infographics built with HTML/CSS/JS and exported to MP4 (with synthesized sound effects), GIF and a PNG poster. 20 motion layouts × 41 visual styles (including 10 eye-catching social styles and 10 bold, high-contrast styles). A deterministic frame-by-frame renderer in headless Chrome makes every video loop seamlessly; sound cues land on the exact frame of each highlight step. Requires Chrome and ffmpeg.
+
+```bash
+# Recommend layout × style × sound from content, then build and export
+/baoyu-infographic-motion path/to/content.md
+
+# Pick layout, style and canvas
+/baoyu-infographic-motion path/to/content.md --layout orbit-panel --style neon-constellation --canvas square
+
+# Energetic social cut with a beat
+/baoyu-infographic-motion path/to/content.md --style aurora-glass --sfx music --format mp4,gif
+```
+
+**Options**:
+| Option | Description |
+|--------|-------------|
+| `--layout <name>` | Motion layout (20 options, e.g. `card-pipeline`, `orbit-panel`, `fan-in`, `live-dashboard`) |
+| `--style <name>` | Visual style (41 options, default: `light-dashboard`) |
+| `--canvas <name>` | `portrait` 1080×1350 (default), `square`, `story` 1080×1920, `landscape` |
+| `--sfx <profile>` | `soft` (ticks + pad, default), `music` (beat on each step), `none` |
+| `--format <list>` | `mp4,gif,png` (default all) |
+
 #### baoyu-diagram
 
 Generate publication-ready SVG diagrams from source material — flowcharts, sequence/protocol diagrams, structural/architecture diagrams, and illustrative intuition diagrams. Analyzes input material to recommend diagram type(s) and splitting strategy, confirms the plan once, then generates all diagrams. Claude writes real SVG code directly following a cohesive design system. Output is self-contained `.svg` files with embedded styles and auto dark-mode.

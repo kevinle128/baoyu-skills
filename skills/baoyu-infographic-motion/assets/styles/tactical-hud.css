@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Share+Tech+Mono&family=Chakra+Petch:wght@500;600;700&display=block");
+
+:root {
+  --bg: #0a0d08;
+  --bg2: #0f130c;
+  --panel: #0f140c;
+  --panel2: #151b10;
+  --ink: #e4ecd2;
+  --muted: #8e9b7a;
+  --line: #2b3521;
+  --grid: rgba(255, 176, 0, 0.035);
+  --c1: #ffb000;
+  --c2: #8dff5a;
+  --c3: #d8c27a;
+  --c4: #ff4d3a;
+  --c5: #6fd6ff;
+  --c6: #ff8a2a;
+  --accent: var(--c1);
+  --radius: 0px;
+  --bw: 1px;
+  --shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+  --glow: 0.8;
+  --font-display: "Black Ops One", "Impact", sans-serif;
+  --font-body: "Chakra Petch", "Share Tech Mono", monospace;
+  --font-mono: "Share Tech Mono", Menlo, monospace;
+  --title-size: 56px;
+  --title-weight: 400;
+  --title-case: uppercase;
+  --title-track: 0.01em;
+  --label-case: uppercase;
+  --code-bg: #070906;
+  --code-ink: #cfe8b8;
+  --code-accent: #ffb000;
+}
+
+.mi-page.mi-grid-bg { background-size: 40px 40px; }
+.mi-page::before, .mi-page::after { content: ""; position: absolute; z-index: 0; pointer-events: none; }
+.mi-page::before {
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 176, 0, 0.55) 0 42%, transparent 42% 58%, rgba(255, 176, 0, 0.55) 58%) calc(100% - 199px) 94px / 2px 112px no-repeat,
+    linear-gradient(90deg, rgba(255, 176, 0, 0.55) 0 42%, transparent 42% 58%, rgba(255, 176, 0, 0.55) 58%) calc(100% - 144px) 149px / 112px 2px no-repeat,
+    repeating-radial-gradient(circle at calc(100% - 200px) 150px, transparent 0 119px, rgba(255, 176, 0, 0.16) 119px 120px, transparent 120px 160px),
+    repeating-linear-gradient(180deg, rgba(141, 255, 90, 0.35) 0 1px, transparent 1px 12px) 14px 0 / 10px 100% no-repeat,
+    repeating-linear-gradient(180deg, rgba(141, 255, 90, 0.5) 0 2px, transparent 2px 60px) 14px 0 / 18px 100% no-repeat,
+    radial-gradient(90% 60% at 50% 40%, transparent 55%, rgba(0, 0, 0, 0.55));
+  -webkit-mask: radial-gradient(circle at calc(100% - 200px) 150px, #000 0 640px, rgba(0, 0, 0, 0.45) 900px);
+  mask: radial-gradient(circle at calc(100% - 200px) 150px, #000 0 640px, rgba(0, 0, 0, 0.45) 900px);
+}
+.mi-page::after {
+  width: 880px;
+  height: 880px;
+  left: calc(100% - 640px);
+  top: -290px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 0 290deg, rgba(255, 176, 0, 0.02) 300deg, rgba(255, 176, 0, 0.2) 358deg, rgba(255, 196, 60, 0.75) 359.4deg, transparent 360deg);
+  -webkit-mask: radial-gradient(circle, #000 0 55%, transparent 70%);
+  mask: radial-gradient(circle, #000 0 55%, transparent 70%);
+  animation: th-sweep 6s linear infinite;
+}
+@keyframes th-sweep { from { rotate: 0deg; } to { rotate: 360deg; } }
+
+.mi-title { color: #eef3e0; }
+.mi-title em { color: var(--c1); text-shadow: 0 0 18px rgba(255, 176, 0, 0.35); }
+.mi-crumb { color: var(--c2); }
+.mi-sub { color: var(--c1); }
+.mi-sub .sep { color: var(--c2); }
+.mi-rule { height: 1px; background: repeating-linear-gradient(90deg, #4a5a33 0 2px, transparent 2px 8px); }
+.mi-rule::after { height: 3px; top: -1px; box-shadow: 0 0 10px var(--accent); }
+.mi-page .mi-card, .mi-page .mi-stat {
+  --bk: color-mix(in oklab, var(--item, var(--accent)) 85%, transparent);
+  border-color: color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 70%), #26301d);
+  background-image:
+    linear-gradient(var(--bk), var(--bk)), linear-gradient(var(--bk), var(--bk)),
+    linear-gradient(var(--bk), var(--bk)), linear-gradient(var(--bk), var(--bk)),
+    linear-gradient(var(--bk), var(--bk)), linear-gradient(var(--bk), var(--bk)),
+    linear-gradient(var(--bk), var(--bk)), linear-gradient(var(--bk), var(--bk)),
+    linear-gradient(180deg, rgba(141, 255, 90, 0.035), transparent 30%);
+  background-size: 18px 2px, 2px 18px, 18px 2px, 2px 18px, 18px 2px, 2px 18px, 18px 2px, 2px 18px, 100% 100%;
+  background-position: 0 0, 0 0, 100% 0, 100% 0, 0 100%, 0 100%, 100% 100%, 100% 100%, 0 0;
+  background-repeat: no-repeat;
+}
+.mi-card h3, .mi-h { font-weight: 400; letter-spacing: 0.01em; }
+.mi-stat-v { font-weight: 400; text-shadow: 0 0 16px color-mix(in oklab, var(--item, var(--accent)) 40%, transparent); }
+.mi-row { border-radius: 0; }
+.mi-code { border: 1px solid #26301d; border-radius: 0; }
+.mi-code-line b { color: #6a7858; opacity: 1; }
+.mi-edge { stroke: #3a4a2a; stroke-dasharray: 6 5; }
+.mi-beam { filter: drop-shadow(0 0 5px var(--item, var(--accent))); }
+.mi-bar { background: repeating-linear-gradient(90deg, #26301d 0 6px, #1a2114 6px 8px); border-radius: 0; }
+.mi-bar > i { border-radius: 0; -webkit-mask: repeating-linear-gradient(90deg, #000 0 6px, transparent 6px 8px); mask: repeating-linear-gradient(90deg, #000 0 6px, transparent 6px 8px); }
+.mi-chip, .mi-badge { border-radius: 0; }
+.mi-hub { border-radius: 50%; border-style: dashed; }
+.mi-foot .mark { font-family: "Black Ops One", sans-serif; font-weight: 400; color: var(--c1); }

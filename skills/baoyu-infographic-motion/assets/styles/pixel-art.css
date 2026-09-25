@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=VT323&family=Silkscreen&family=Press+Start+2P&display=block");
+
+:root {
+  --bg: #12112b;
+  --bg2: #1b1a3d;
+  --panel: #211f4a;
+  --panel2: #2b2960;
+  --ink: #f4f1ff;
+  --muted: #a8a3d6;
+  --line: #4a47a0;
+  --grid: rgba(168, 163, 214, 0.08);
+  --c1: #3cbcfc;
+  --c2: #80d010;
+  --c3: #fc7460;
+  --c4: #f878f8;
+  --c5: #fca044;
+  --c6: #fcd854;
+  --accent: var(--c1);
+  --radius: 0px;
+  --bw: 4px;
+  --shadow: 6px 6px 0 #06051a;
+  --glow: 0.45;
+  --font-display: "Pixelify Sans", "Courier New", monospace;
+  --font-body: "VT323", "Courier New", monospace;
+  --font-mono: "VT323", "Courier New", monospace;
+  --title-size: 50px;
+  --title-weight: 700;
+  --title-case: uppercase;
+  --title-track: 0;
+  --label-case: uppercase;
+  --code-bg: #07061a;
+  --code-ink: #c9f7c1;
+  --code-accent: #80d010;
+}
+
+.mi-page { background-color: var(--bg); font-size-adjust: 0.52; image-rendering: pixelated; }
+.mi-grid-bg {
+  background-image:
+    linear-gradient(var(--grid) 2px, transparent 2px),
+    linear-gradient(90deg, var(--grid) 2px, transparent 2px);
+  background-size: 16px 16px;
+}
+.mi-page::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    linear-gradient(#fcd854, #fcd854) calc(100% - 24px) 16px / 8px 8px no-repeat,
+    linear-gradient(#fcd854, #fcd854) calc(100% - 16px) 24px / 24px 8px no-repeat,
+    linear-gradient(#fcd854, #fcd854) calc(100% - 24px) 32px / 8px 8px no-repeat,
+    linear-gradient(#f878f8, #f878f8) 4% 44% / 8px 8px no-repeat,
+    linear-gradient(#3cbcfc, #3cbcfc) 97% 70% / 8px 8px no-repeat,
+    linear-gradient(#80d010, #80d010) 2% 92% / 8px 8px no-repeat,
+    linear-gradient(0deg, #1d1b45 0 24px, transparent 24px) 0 100% / 100% 24px no-repeat;
+  animation: mi-pixel-blink 1.6s steps(2, jump-none) infinite;
+}
+.mi-page::after {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0 2px, transparent 2px 4px),
+    radial-gradient(ellipse at 50% 50%, transparent 62%, rgba(0, 0, 0, 0.5));
+}
+@keyframes mi-pixel-blink { 0% { opacity: 1; } 100% { opacity: 0.35; } }
+.mi-card, .mi-stat, .mi-code {
+  box-shadow: var(--shadow), inset -4px -4px 0 rgba(0, 0, 0, 0.25), inset 4px 4px 0 rgba(255, 255, 255, 0.06);
+}
+[data-item].mi-card, .mi-card[data-item] {
+  box-shadow: 6px 6px 0 color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 100%), #06051a), inset -4px -4px 0 rgba(0, 0, 0, 0.25);
+}
+.mi-title, .mi-card h3, .mi-h, .mi-stat-v { font-size-adjust: none; }
+.mi-title { line-height: 1.02; text-shadow: 4px 4px 0 #06051a; }
+.mi-title em { color: var(--accent); text-shadow: 4px 4px 0 color-mix(in oklab, var(--accent) 35%, #06051a); }
+.mi-card h3, .mi-h { letter-spacing: 0.02em; text-shadow: 3px 3px 0 #06051a; }
+.mi-crumb { font-family: "Silkscreen", monospace; font-size-adjust: none; }
+.mi-top, .mi-sub, .mi-label, .mi-row, .mi-code, .mi-foot, .mi-stat-l { letter-spacing: 0.05em; }
+.mi-rule { height: 4px; background: repeating-linear-gradient(90deg, var(--line) 0 8px, transparent 8px 12px); }
+.mi-rule::after { top: -2px; height: 8px; background: repeating-linear-gradient(90deg, var(--accent) 0 8px, transparent 8px 12px); }
+.mi-row { border-radius: 0; border-width: 2px; }
+.mi-code { border: 4px solid var(--line); border-radius: 0; }
+.mi-bar { border-radius: 0; height: 12px; background: #0b0a24; border: 2px solid var(--line); }
+.mi-bar > i { border-radius: 0; background-image: repeating-linear-gradient(90deg, transparent 0 6px, rgba(0, 0, 0, 0.35) 6px 8px); }
+.mi-stat-v { font-family: "Press Start 2P", monospace; font-size: 38px; line-height: 1.1; text-shadow: 4px 4px 0 #06051a; }
+.mi-chip, .mi-badge { border-radius: 0; border-width: 2px; }
+.mi-ring { mask: none; border-radius: 0; }
+.mi-edge { stroke: var(--line); stroke-width: 4; stroke-dasharray: 8 8; stroke-linecap: square; }
+.mi-beam { stroke-width: 4; stroke-linecap: square; stroke-dasharray: 8 4; }
+.mi-beam-dot { filter: none; stroke: #06051a; stroke-width: 3; }
+.mi-hub { border-radius: 0; border-width: 4px; }
+.mi-caret { animation: none; }
+.mi-foot .mark { font-family: "Silkscreen", monospace; font-size-adjust: none; font-size: 16px; }

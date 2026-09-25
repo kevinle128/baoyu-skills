@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&family=Inter:wght@400;600;800&family=Roboto+Mono:wght@400;500&display=block");
+
+:root {
+  --bg: #fafafa;
+  --bg2: #f1f1f2;
+  --panel: #ffffff;
+  --panel2: #f3f4f6;
+  --ink: #26292f;
+  --muted: #6b7280;
+  --line: #b9bec7;
+  --grid: rgba(55, 65, 81, 0.16);
+  --c1: #2f6fed;
+  --c2: #0f9d74;
+  --c3: #e5484d;
+  --c4: #7c3aed;
+  --c5: #b45309;
+  --c6: #0e8fb0;
+  --accent: var(--c1);
+  --radius: 8px;
+  --bw: 2px;
+  --shadow: none;
+  --glow: 0.25;
+  --font-display: "Balsamiq Sans", "Comic Sans MS", sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "Roboto Mono", "SF Mono", Menlo, monospace;
+  --title-size: 60px;
+  --title-weight: 700;
+  --title-case: none;
+  --title-track: -0.01em;
+  --label-case: uppercase;
+  --code-bg: #f3f4f6;
+  --code-ink: #374151;
+  --code-accent: #2f6fed;
+}
+
+.mi-page { background-color: var(--bg); }
+.mi-grid-bg {
+  background-image: radial-gradient(circle, var(--grid) 1.2px, transparent 1.6px);
+  background-size: 24px 24px;
+  background-position: 12px 12px;
+}
+.mi-page::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    linear-gradient(#e5484d, #e5484d) 18px 54px / 1px calc(100% - 108px) no-repeat,
+    linear-gradient(#e5484d, #e5484d) 13px 54px / 11px 1px no-repeat,
+    linear-gradient(#e5484d, #e5484d) 13px calc(100% - 54px) / 11px 1px no-repeat,
+    linear-gradient(90deg, #e5484d, #e5484d) 54px 18px / calc(100% - 108px) 1px no-repeat,
+    linear-gradient(#e5484d, #e5484d) 54px 13px / 1px 11px no-repeat,
+    linear-gradient(#e5484d, #e5484d) calc(100% - 54px) 13px / 1px 11px no-repeat;
+  opacity: 0.7;
+}
+.mi-page::after {
+  content: "1080 × 1350  ·  8pt grid  ·  v0.3 draft";
+  position: absolute; right: 60px; top: 5px; z-index: 0; pointer-events: none;
+  font: 500 11px/1 "Roboto Mono", monospace; letter-spacing: 0.08em;
+  color: #e5484d; background: var(--bg); padding: 2px 6px;
+}
+.mi-card, .mi-stat { border-style: dashed; border-color: var(--line); }
+[data-item].mi-card, .mi-card[data-item] { border-style: solid; }
+.mi-card h3, .mi-h { font-family: var(--font-display); letter-spacing: -0.01em; }
+.mi-title em {
+  color: var(--accent);
+  background: linear-gradient(transparent 62%, color-mix(in oklab, var(--accent) 18%, transparent) 62% 92%, transparent 92%);
+}
+.mi-row { background: var(--panel2); border-color: #d6d9de; }
+.mi-code { border: 2px dashed var(--line); }
+.mi-bar { background: #e5e7eb; }
+.mi-edge { stroke: #9ca3af; stroke-dasharray: 5 5; }
+.mi-beam { stroke-width: 2.5; stroke-dasharray: none; }
+.mi-beam-dot { filter: none; }
+.mi-chip, .mi-badge { border-radius: 6px; border-style: dashed; }
+.mi-stat { background-image: linear-gradient(to bottom right, transparent calc(50% - 0.5px), #eceef1 calc(50% - 0.5px) calc(50% + 0.5px), transparent calc(50% + 0.5px)), linear-gradient(to top right, transparent calc(50% - 0.5px), #eceef1 calc(50% - 0.5px) calc(50% + 0.5px), transparent calc(50% + 0.5px)); }
+.mi-foot .mark { font-family: var(--font-display); }

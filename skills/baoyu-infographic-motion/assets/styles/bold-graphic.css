@@ -1,0 +1,85 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Archivo:wght@500;700;900&family=Space+Mono:wght@400;700&display=block");
+
+:root {
+  --bg: #fff6df;
+  --bg2: #ffe9b8;
+  --panel: #ffffff;
+  --panel2: #fff4d6;
+  --ink: #111111;
+  --muted: #4a4a4a;
+  --line: #111111;
+  --grid: rgba(17, 17, 17, 0.14);
+  --c1: #e8130c;
+  --c2: #0a4bff;
+  --c3: #00924a;
+  --c4: #e0158f;
+  --c5: #ff7a00;
+  --c6: #ffd000;
+  --accent: var(--c1);
+  --radius: 4px;
+  --bw: 4px;
+  --shadow: 7px 7px 0 #111111;
+  --glow: 0;
+  --font-display: "Bangers", "Impact", sans-serif;
+  --font-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Space Mono", Menlo, monospace;
+  --title-size: 60px;
+  --title-weight: 400;
+  --title-case: uppercase;
+  --title-track: 0.03em;
+  --label-case: uppercase;
+  --code-bg: #111111;
+  --code-ink: #fff6df;
+  --code-accent: #ffd000;
+}
+
+.mi-page { background-color: var(--bg); }
+.mi-grid-bg {
+  background-image: radial-gradient(circle, var(--grid) 2px, transparent 2.6px);
+  background-size: 14px 14px;
+}
+.mi-page::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    repeating-conic-gradient(from 0deg at 100% 0%, rgba(255, 208, 0, 0.55) 0 4deg, transparent 4deg 9deg),
+    radial-gradient(circle, rgba(232, 19, 12, 0.5) 3.5px, transparent 4px) 0 0 / 16px 16px;
+  -webkit-mask: radial-gradient(circle at 100% 0%, #000 0 22%, transparent 48%), radial-gradient(circle at 0% 100%, #000 0 14%, transparent 34%);
+  mask: radial-gradient(circle at 100% 0%, #000 0 22%, transparent 48%), radial-gradient(circle at 0% 100%, #000 0 14%, transparent 34%);
+}
+.mi-page::after {
+  content: "";
+  position: absolute; inset: 14px; z-index: 0; pointer-events: none;
+  border: 5px solid #111;
+}
+.mi-title { line-height: 0.95; -webkit-text-stroke: 1px #111; }
+.mi-title em {
+  color: var(--accent);
+  -webkit-text-stroke: 2px #111;
+  text-shadow: 4px 4px 0 #111;
+}
+.mi-card h3, .mi-h { letter-spacing: 0.03em; font-size: 34px; line-height: 0.98; }
+[data-item].mi-card, .mi-card[data-item] {
+  border-color: #111;
+  box-shadow: calc(7px + var(--on, 0) * 5px) calc(7px + var(--on, 0) * 5px) 0 color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 100%), #111);
+  translate: calc(var(--on, 0) * -3px) calc(var(--on, 0) * -3px);
+}
+.mi-crumb { background: #111; color: var(--c6); padding: 1px 10px; }
+.mi-meta { background: var(--bg); color: #333; padding: 1px 8px; border: 2px solid #111; }
+.mi-sub { font-weight: 700; }
+.mi-rule { height: 4px; background: #111; }
+.mi-rule::after { top: -3px; height: 10px; }
+.mi-label { color: #333; font-weight: 700; }
+.mi-row { border: 2px solid #111; font-weight: 700; }
+.mi-row[data-item] { border-left: 7px solid color-mix(in oklab, var(--item, var(--accent)) calc(40% + var(--on, 0) * 60%), #111); }
+.mi-code { border: 4px solid #111; }
+.mi-bar { border: 2.5px solid #111; background: #fff; height: 14px; }
+.mi-stat { padding: 16px 20px; background-image: radial-gradient(circle, color-mix(in oklab, var(--item, var(--accent)) 22%, transparent) 2px, transparent 2.6px); background-size: 10px 10px; }
+.mi-stat-v { font-size: 50px; line-height: 0.92; -webkit-text-stroke: 1.5px #111; text-shadow: 3px 3px 0 #111; letter-spacing: 0.02em; }
+.mi-stat-l { color: #222; font-weight: 700; }
+.mi-chip, .mi-badge { border-width: 2.5px; font-weight: 700; border-radius: 4px; }
+.mi-edge { stroke: #111; stroke-width: 4; }
+.mi-beam { stroke-width: 6; }
+.mi-beam-dot { stroke: #111; stroke-width: 3; filter: none; }
+.mi-hub { border: 4px solid #111; box-shadow: 7px 7px 0 #111; }
+.mi-foot .mark { font-family: var(--font-display); font-size: 26px; letter-spacing: 0.04em; }

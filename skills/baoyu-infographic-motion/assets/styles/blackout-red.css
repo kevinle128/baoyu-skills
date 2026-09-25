@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Narrow:wght@500;700&family=JetBrains+Mono:wght@400;700&display=block");
+
+:root {
+  --bg: #050505;
+  --bg2: #0c0c0c;
+  --panel: #0d0d0d;
+  --panel2: #171717;
+  --ink: #f5f5f2;
+  --muted: #9b9b97;
+  --line: #2e2e2e;
+  --grid: rgba(255, 255, 255, 0.035);
+  --c1: #ff2323;
+  --c2: #ff6a3d;
+  --c3: #d8d8d3;
+  --c4: #ff9d00;
+  --c5: #ff8a8a;
+  --c6: #a9a9a4;
+  --accent: var(--c1);
+  --radius: 0px;
+  --bw: 2px;
+  --shadow: 8px 8px 0 rgba(255, 35, 35, 0.12);
+  --glow: 0.9;
+  --font-display: "Anton", "Impact", "Arial Narrow", sans-serif;
+  --font-body: "Archivo Narrow", "Arial Narrow", sans-serif;
+  --font-mono: "JetBrains Mono", Menlo, monospace;
+  --title-size: 64px;
+  --title-weight: 400;
+  --title-case: uppercase;
+  --title-track: 0.01em;
+  --label-case: uppercase;
+  --code-bg: #000000;
+  --code-ink: #f0e6e6;
+  --code-accent: #ff4a4a;
+}
+
+.mi-page::before, .mi-page::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.mi-page::before {
+  background:
+    repeating-linear-gradient(115deg, transparent 0 14px, #ff2323 14px 24px, transparent 24px 34px) 100% 0 / 170px 34px no-repeat,
+    repeating-linear-gradient(-60deg, rgba(255, 35, 35, 0.55) 0 3px, transparent 3px 20px) 0 100% / 360px 30px no-repeat,
+    linear-gradient(#ff2323, #ff2323) 0 0 / 100% 4px no-repeat,
+    radial-gradient(120% 60% at 100% 0%, rgba(255, 35, 35, 0.10), transparent 60%),
+    radial-gradient(90% 50% at 0% 100%, rgba(255, 35, 35, 0.08), transparent 60%);
+}
+.mi-page::after {
+  background:
+    linear-gradient(180deg, transparent 0 46%, rgba(255, 35, 35, 0.10) 48.6%, rgba(255, 35, 35, 0.55) 49.6%, #ff2323 50%, transparent 50.3%) 0 0 / 100% 36% no-repeat,
+    repeating-linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 4px);
+  mix-blend-mode: screen;
+  animation: br-scan 5s linear infinite;
+}
+@keyframes br-scan { from { background-position: 0 -60%, 0 0; } to { background-position: 0 160%, 0 0; } }
+
+.mi-title { color: #ffffff; line-height: 0.98; }
+.mi-title em { color: var(--accent); background: linear-gradient(180deg, transparent 88%, #ff2323 88% 96%, transparent 96%); box-decoration-break: clone; -webkit-box-decoration-break: clone; animation: br-glitch 3s steps(1) infinite; }
+@keyframes br-glitch {
+  0%, 84%, 100% { text-shadow: none; }
+  85% { text-shadow: -5px 0 #ff2323, 5px 0 rgba(255, 255, 255, 0.35); }
+  87% { text-shadow: 6px 1px rgba(255, 35, 35, 0.9), -3px -1px #7a0000; }
+  89% { text-shadow: none; }
+  91% { text-shadow: -3px 0 #ff2323; }
+  92% { text-shadow: none; }
+}
+.mi-crumb { color: #050505; background: var(--c1); padding: 1px 8px; }
+.mi-sub { color: var(--c1); font-weight: 700; }
+.mi-sub .sep { color: #5a5a5a; }
+.mi-rule { height: 3px; background: #1d1d1d; }
+.mi-rule::after { height: 3px; top: 0; box-shadow: 0 0 14px rgba(255, 35, 35, 0.8); }
+.mi-card, [data-item].mi-card {
+  background: linear-gradient(135deg, color-mix(in oklab, var(--item, var(--accent)) 9%, var(--panel)) 0 18px, var(--panel) 18px);
+  border-width: 1px 1px 1px 5px;
+  border-left-color: color-mix(in oklab, var(--item, var(--accent)) calc(55% + var(--on, 0) * 45%), var(--line));
+}
+.mi-card h3, .mi-h { font-weight: 400; letter-spacing: 0.02em; }
+.mi-stat { border-width: 0 0 0 6px; border-color: var(--item, var(--accent)); background: linear-gradient(115deg, #141414 0 70%, color-mix(in oklab, var(--item, var(--accent)) 14%, #141414) 70%); }
+.mi-stat-v { font-size: 52px; font-weight: 400; }
+.mi-label { font-weight: 700; }
+.mi-row { border-radius: 0; }
+.mi-code { border-left: 4px solid var(--c1); }
+.mi-code-line b { color: #6b4a4a; opacity: 1; }
+.mi-chip, .mi-badge { border-radius: 0; font-weight: 700; }
+.mi-bar { background: #222; border-radius: 0; }
+.mi-bar > i { border-radius: 0; background: repeating-linear-gradient(115deg, var(--item, var(--accent)) 0 10px, color-mix(in oklab, var(--item, var(--accent)) 70%, #000) 10px 13px); }
+.mi-edge { stroke: #3a3a3a; stroke-dasharray: 6 5; }
+.mi-beam { stroke-width: 4; stroke-linecap: square; filter: drop-shadow(0 0 5px var(--item, var(--accent))); }
+.mi-hub { border-radius: 0; border-width: 3px; }
+.mi-foot .mark { font-family: var(--font-display); font-weight: 400; color: #050505; background: var(--c1); padding: 2px 10px; letter-spacing: 0.04em; text-transform: uppercase; }

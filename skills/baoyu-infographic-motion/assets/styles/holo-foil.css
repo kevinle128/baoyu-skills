@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Manrope:wght@500;700&family=DM+Mono:wght@400;500&display=block");
+
+:root {
+  --bg: #f1eff6;
+  --bg2: #e7e4f0;
+  --panel: #ffffff;
+  --panel2: #f4f2fa;
+  --ink: #1c1733;
+  --muted: #625b7e;
+  --line: #d9d4e8;
+  --grid: rgba(60, 40, 120, 0.04);
+  --c1: #6a4cff;
+  --c2: #00879e;
+  --c3: #e03d8a;
+  --c4: #c2560a;
+  --c5: #1f8a54;
+  --c6: #2f6fe0;
+  --accent: var(--c1);
+  --radius: 20px;
+  --bw: 2px;
+  --shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset, 0 16px 36px -20px rgba(80, 50, 160, 0.45);
+  --glow: 0.7;
+  --font-display: "Unbounded", "Helvetica Neue", sans-serif;
+  --font-body: "Manrope", "Helvetica Neue", sans-serif;
+  --font-mono: "DM Mono", Menlo, monospace;
+  --title-size: 54px;
+  --title-weight: 800;
+  --title-case: uppercase;
+  --title-track: -0.02em;
+  --label-case: uppercase;
+  --code-bg: #1c1733;
+  --code-ink: #efe9ff;
+  --code-accent: #7ff0e0;
+  --holo: linear-gradient(115deg, #ff9ad5, #ffd98f, #a8ffcf, #8fd8ff, #c7a6ff, #ff9ad5, #ffd98f, #a8ffcf, #8fd8ff, #c7a6ff, #ff9ad5);
+}
+
+.mi-page { background-color: var(--bg); }
+.mi-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: var(--holo) 0 0 / 200% 200%;
+  opacity: 0.32;
+  animation: hf-shift 6s linear infinite;
+}
+.mi-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(115deg, transparent 40%, rgba(255, 255, 255, 0.85) 50%, transparent 60%) no-repeat 0 0 / 300% 100%;
+  animation: hf-sweep 3s linear infinite;
+}
+@keyframes hf-shift { from { background-position: 0% 50%; } to { background-position: 100% 50%; } }
+@keyframes hf-sweep { from { background-position: 100% 0; } 70%, to { background-position: 0% 0; } }
+
+.mi-card, .mi-stat, .mi-card[data-item] {
+  border-color: color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 100%), transparent);
+  background: linear-gradient(var(--panel), var(--panel)) padding-box, var(--holo) 0 0 / 300% 100% border-box;
+  animation: hf-shift 6s linear infinite;
+}
+.mi-title {
+  background: linear-gradient(115deg, #3a1f9e, #c2358f, #1d7fa8, #6a4cff, #3a1f9e) 0 0 / 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: hf-shift 6s linear infinite;
+}
+.mi-title em { color: var(--accent); }
+.mi-card h3, .mi-h { font-family: var(--font-body); font-weight: 800; letter-spacing: -0.02em; }
+.mi-stat-v { background: linear-gradient(115deg, var(--item, var(--accent)), #c2358f, var(--item, var(--accent))) 0 0 / 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: hf-shift 6s linear infinite; }
+.mi-hub { background: linear-gradient(#fff, #fff) padding-box, var(--holo) 0 0 / 300% 100% border-box; border-color: transparent; }

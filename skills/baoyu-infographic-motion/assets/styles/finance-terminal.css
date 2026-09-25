@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Roboto+Condensed:wght@700;800&display=block");
+
+:root {
+  --bg: #000000;
+  --bg2: #070707;
+  --panel: #0a0a0a;
+  --panel2: #141414;
+  --ink: #ffc247;
+  --muted: #b3955a;
+  --line: #2f2f2f;
+  --grid: rgba(255, 176, 0, 0.04);
+  --c1: #ffb000;
+  --c2: #1fdc6c;
+  --c3: #ff4136;
+  --c4: #4fc3ff;
+  --c5: #f0f0f0;
+  --c6: #ff7b00;
+  --accent: var(--c1);
+  --radius: 0px;
+  --bw: 1px;
+  --shadow: none;
+  --glow: 0.45;
+  --font-display: "Roboto Condensed", "Arial Narrow", sans-serif;
+  --font-body: "IBM Plex Mono", Menlo, monospace;
+  --font-mono: "IBM Plex Mono", Menlo, monospace;
+  --title-size: 58px;
+  --title-weight: 800;
+  --title-case: uppercase;
+  --title-track: 0em;
+  --label-case: uppercase;
+  --code-bg: #000000;
+  --code-ink: #ffc247;
+  --code-accent: #1fdc6c;
+}
+
+.mi-page.mi-grid-bg { background-size: 24px 24px; }
+.mi-page::before, .mi-page::after {
+  position: absolute; left: 0; z-index: 0; pointer-events: none;
+  height: 24px; line-height: 24px; white-space: pre; overflow: hidden;
+  font: 600 13px/24px "IBM Plex Mono", Menlo, monospace; letter-spacing: 0.04em;
+}
+.mi-page::before {
+  top: 0; right: 0;
+  content: " 1<GO> EQUITY   2<GO> FX   3<GO> RATES   4<GO> CMDTY   5<GO> NEWS   │  F8 EXEC   F9 BLOTTER   F10 PRINT   │  SESSION 07:30 ICT   ";
+  color: #000000;
+  background: #ffb000;
+  box-shadow: 0 1px 0 #000, 0 2px 0 #ffb000;
+}
+.mi-page::after {
+  bottom: 0;
+  content: "SPX 5,832.10 ▲0.42%   NDX 20,412.7 ▲0.61%   UST10Y 4.018 ▼0.03   EURUSD 1.0912 ▲0.08%   BRENT 78.44 ▼1.20%   GOLD 2,641.5 ▲0.35%   BTC 63,210 ▲2.14%   VIX 14.82 ▼3.10%   NKY 38,911 ▲0.22%      SPX 5,832.10 ▲0.42%   NDX 20,412.7 ▲0.61%   UST10Y 4.018 ▼0.03   EURUSD 1.0912 ▲0.08%   BRENT 78.44 ▼1.20%   GOLD 2,641.5 ▲0.35%   BTC 63,210 ▲2.14%   VIX 14.82 ▼3.10%   NKY 38,911 ▲0.22%      ";
+  color: #ffc247;
+  background: linear-gradient(180deg, #1a1a1a, #0d0d0d);
+  border-top: 1px solid #3a2a00;
+  animation: ft-tape 14s linear infinite;
+}
+@keyframes ft-tape { from { translate: 0 0; } to { translate: -50% 0; } }
+
+.mi-top { font-size: 14px; }
+.mi-crumb { color: #000; background: var(--c1); padding: 0 8px; font-weight: 700; }
+.mi-meta { color: var(--c2); }
+.mi-meta::after { content: " █"; animation: ft-blink 1s steps(1) infinite; }
+@keyframes ft-blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+.mi-title { color: #ffb000; line-height: 1; }
+.mi-title em { color: #000; background: var(--accent); padding: 0 0.1em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.mi-sub { color: #f0f0f0; font-size: 16px; font-weight: 600; }
+.mi-sub .sep { color: var(--c1); }
+.mi-rule { height: 1px; background: #3a2a00; }
+.mi-rule::after { height: 3px; top: -1px; }
+.mi-card, [data-item].mi-card {
+  background: linear-gradient(180deg, color-mix(in oklab, var(--item, var(--accent)) 16%, #0d0d0d) 0 30px, var(--panel) 30px);
+  border-top: 2px solid color-mix(in oklab, var(--item, var(--accent)) calc(50% + var(--on, 0) * 50%), var(--line));
+}
+.mi-card h3, .mi-h { color: #f0f0f0; letter-spacing: 0.01em; }
+.mi-label { color: var(--muted); font-weight: 600; }
+.mi-label.acc { color: var(--accent); }
+.mi-stat { background: #0a0a0a; border: 1px solid #2f2f2f; border-top: 3px solid var(--item, var(--accent)); }
+.mi-stat-v { font-family: "IBM Plex Mono", monospace; font-weight: 700; font-size: 44px; letter-spacing: -0.04em; }
+.mi-stat-l { color: #b3955a; }
+.mi-row { border-radius: 0; background: #101010; border-color: #262626; color: #ffc247; }
+.mi-code { border: 1px solid #2f2f2f; border-radius: 0; }
+.mi-code-line b { color: #7a6331; opacity: 1; }
+.mi-chip, .mi-badge { border-radius: 0; font-weight: 600; }
+.mi-bar { background: #1c1c1c; border-radius: 0; }
+.mi-bar > i { border-radius: 0; }
+.mi-edge { stroke: #333; }
+.mi-beam { stroke-linecap: butt; }
+.mi-hub { border-radius: 0; }
+.mi-foot { color: #b3955a; }
+.mi-foot .path { color: var(--c2); }
+.mi-foot .mark { color: #000; background: #ffb000; font-family: var(--font-display); padding: 0 8px; text-transform: uppercase; }

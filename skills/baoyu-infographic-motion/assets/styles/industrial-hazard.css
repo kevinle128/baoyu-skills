@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Oswald:wght@500;600;700&family=Overpass+Mono:wght@400;600;700&display=block");
+
+:root {
+  --bg: #17191c;
+  --bg2: #1e2124;
+  --panel: #212428;
+  --panel2: #2a2e33;
+  --ink: #f2f0e9;
+  --muted: #a4a8ad;
+  --line: #3b4046;
+  --grid: rgba(255, 255, 255, 0.03);
+  --c1: #ffc400;
+  --c2: #ff6a13;
+  --c3: #3cc56e;
+  --c4: #3a93ff;
+  --c5: #ff4034;
+  --c6: #e9e5da;
+  --accent: var(--c1);
+  --radius: 0px;
+  --bw: 2px;
+  --shadow: 0 2px 0 rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  --glow: 0.6;
+  --font-display: "Big Shoulders Display", "Oswald", "Impact", sans-serif;
+  --font-body: "Oswald", "Arial Narrow", sans-serif;
+  --font-mono: "Overpass Mono", Menlo, monospace;
+  --title-size: 66px;
+  --title-weight: 900;
+  --title-case: uppercase;
+  --title-track: 0.01em;
+  --label-case: uppercase;
+  --code-bg: #111214;
+  --code-ink: #ecebe4;
+  --code-accent: #ffc400;
+}
+
+.mi-page.mi-grid-bg { background-image: none; }
+.mi-page::before, .mi-page::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.mi-page::before {
+  background:
+    radial-gradient(circle at 50% 50%, #50565d 0 2.5px, #0c0d0f 3px 3.5px, transparent 4px) 20px 20px / 60px 60px,
+    linear-gradient(90deg, transparent 0 calc(100% - 2px), rgba(0, 0, 0, 0.45) calc(100% - 2px)) 0 0 / 270px 100%,
+    linear-gradient(180deg, transparent 0 calc(100% - 2px), rgba(0, 0, 0, 0.45) calc(100% - 2px)) 0 0 / 100% 270px,
+    radial-gradient(90% 60% at 30% 0%, rgba(255, 255, 255, 0.05), transparent 70%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.012) 0 1px, transparent 1px 4px);
+  opacity: 0.9;
+}
+.mi-page::after {
+  background: linear-gradient(-45deg, #ffc400 25%, #121212 25% 50%, #ffc400 50% 75%, #121212 75%) 0 0 / 40px 40px;
+  -webkit-mask: linear-gradient(180deg, #000 0 16px, transparent 16px calc(100% - 16px), #000 calc(100% - 16px));
+  mask: linear-gradient(180deg, #000 0 16px, transparent 16px calc(100% - 16px), #000 calc(100% - 16px));
+  animation: ih-march 1.5s linear infinite;
+}
+@keyframes ih-march { from { background-position: 0 0; } to { background-position: 40px 0; } }
+
+.mi-title { color: #f6f4ee; }
+.mi-title em { color: var(--c1); }
+.mi-crumb { color: var(--c1); font-weight: 600; }
+.mi-sub { color: #f2f0e9; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.08em; }
+.mi-sub .sep { color: var(--c1); }
+.mi-rule { height: 6px; background: linear-gradient(-45deg, #3b4046 25%, #1a1c1f 25% 50%, #3b4046 50% 75%, #1a1c1f 75%) 0 0 / 12px 12px; }
+.mi-rule::after { height: 6px; top: 0; background: linear-gradient(-45deg, #ffc400 25%, #121212 25% 50%, #ffc400 50% 75%, #121212 75%) 0 0 / 12px 12px; }
+.mi-page .mi-card, .mi-page .mi-stat {
+  --rv: radial-gradient(circle, #6b727a 0 2.5px, #0c0d0f 3px 3.5px, transparent 4px);
+  background-image: var(--rv), var(--rv), var(--rv), var(--rv), linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent 30%);
+  background-size: 10px 10px, 10px 10px, 10px 10px, 10px 10px, 100% 100%;
+  background-position: 5px 5px, calc(100% - 5px) 5px, 5px calc(100% - 5px), calc(100% - 5px) calc(100% - 5px), 0 0;
+  background-repeat: no-repeat;
+}
+.mi-page .mi-stat {
+  background-image: linear-gradient(-45deg, var(--item, var(--accent)) 25%, #121212 25% 50%, var(--item, var(--accent)) 50% 75%, #121212 75%), var(--rv), var(--rv), linear-gradient(180deg, rgba(255, 255, 255, 0.045), transparent 30%);
+  background-size: 12px 12px, 10px 10px, 10px 10px, 100% 100%;
+  background-position: 0 -6px, 5px calc(100% - 5px), calc(100% - 5px) calc(100% - 5px), 0 0;
+  background-repeat: repeat-x, no-repeat, no-repeat, no-repeat;
+}
+.mi-card h3, .mi-h { font-weight: 900; letter-spacing: 0.01em; }
+.mi-stat-v { font-weight: 900; }
+.mi-label { font-weight: 600; }
+.mi-row { border-radius: 0; }
+.mi-code { border: 2px solid #2d3136; border-radius: 0; }
+.mi-code-line b { color: #7b8087; opacity: 1; }
+.mi-edge { stroke: #4a5058; stroke-width: 3; }
+.mi-beam { stroke-width: 4; stroke-linecap: square; filter: drop-shadow(0 0 3px var(--item, var(--accent))); }
+.mi-bar { background: #33373d; border-radius: 0; }
+.mi-bar > i { border-radius: 0; }
+.mi-chip, .mi-badge {
+  border-radius: 0;
+  font-weight: 700;
+  background: linear-gradient(-45deg, var(--item, var(--accent)) 25%, #121212 25% 50%, var(--item, var(--accent)) 50% 75%, #121212 75%) 0 0 / 8px 8px repeat-y, #151618;
+}
+.mi-hub { border-radius: 0; border-width: 3px; }
+.mi-foot .mark { font-family: "Big Shoulders Display", sans-serif; font-weight: 900; text-transform: uppercase; letter-spacing: 0.04em; font-size: 20px; }

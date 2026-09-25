@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Share+Tech+Mono&display=block");
+
+:root {
+  --bg: #06110b;
+  --bg2: #081710;
+  --panel: #091a10;
+  --panel2: #0c2215;
+  --ink: #d8f5c0;
+  --muted: #6fa35e;
+  --line: #1c4024;
+  --grid: rgba(111, 191, 74, 0.08);
+  --c1: #b6ff5a;
+  --c2: #4ff0c8;
+  --c3: #f2f55a;
+  --c4: #7fd65a;
+  --c5: #ffb84a;
+  --c6: #9ff0ff;
+  --accent: var(--c1);
+  --radius: 2px;
+  --bw: 1px;
+  --shadow: 0 0 0 1px rgba(182, 255, 90, 0.03);
+  --glow: 1.1;
+  --font-display: "Saira Condensed", "Arial Narrow", sans-serif;
+  --font-body: "Share Tech Mono", Menlo, monospace;
+  --font-mono: "Share Tech Mono", Menlo, monospace;
+  --title-size: 66px;
+  --title-weight: 700;
+  --title-case: uppercase;
+  --title-track: 0.01em;
+  --label-case: uppercase;
+  --code-bg: #030b06;
+  --code-ink: #c6f0a8;
+  --code-accent: #b6ff5a;
+}
+
+.mi-page { background: radial-gradient(110% 90% at 50% 45%, #0a1c11 0%, var(--bg) 70%); }
+.mi-page.mi-grid-bg {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    radial-gradient(110% 90% at 50% 45%, #0a1c11 0%, var(--bg) 70%);
+  background-size: 54px 54px, 54px 54px, auto;
+}
+.mi-page::before, .mi-page::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.mi-page::before {
+  background: linear-gradient(180deg, transparent, rgba(182, 255, 90, 0.06) 45%, rgba(182, 255, 90, 0.12) 50%, transparent 55%);
+  background-size: 100% 30%;
+  background-repeat: no-repeat;
+  animation: crt-roll 4s linear infinite;
+}
+.mi-page::after {
+  background:
+    repeating-linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px),
+    radial-gradient(120% 100% at 50% 50%, transparent 60%, rgba(0, 0, 0, 0.55));
+  animation: crt-flicker 2s steps(2) infinite;
+}
+@keyframes crt-roll { from { background-position: 0 -40%; } to { background-position: 0 140%; } }
+@keyframes crt-flicker { 0%, 100% { opacity: 0.9; } 50% { opacity: 1; } }
+
+.mi-title, .mi-card h3 { text-shadow: 0 0 14px rgba(182, 255, 90, 0.35); }
+.mi-title { color: #e6ffd0; }
+.mi-title em { text-shadow: 0 0 18px color-mix(in oklab, var(--accent) 70%, transparent); }
+.mi-crumb, .mi-sub, .mi-label.acc, .mi-stat-v { text-shadow: 0 0 10px color-mix(in oklab, var(--item, var(--accent)) 55%, transparent); }
+.mi-rule { height: 1px; background: #2e5a2a; }
+.mi-card { background: color-mix(in oklab, var(--panel) 80%, transparent); border-color: #1f4a27; }
+.mi-card h3 { font-size: 34px; }
+.mi-stat { background: transparent; border-color: #1f4a27; }
+.mi-stat-v { font-size: 54px; }
+.mi-row { background: #0a1d11; border-color: #173a1f; }
+.mi-code { border: 1px solid #173a1f; }
+.mi-code-line b { color: #4a7a3a; opacity: 1; }
+.mi-edge { stroke: #1c4024; }
+.mi-beam { filter: drop-shadow(0 0 6px var(--item, var(--accent))); }
+.mi-bar { background: #12301a; border-radius: 0; }
+.mi-bar > i { border-radius: 0; background: repeating-linear-gradient(90deg, var(--item, var(--accent)) 0 6px, transparent 6px 8px); }
+.mi-chip, .mi-badge { border-radius: 0; }
+.mi-foot .mark { color: var(--c1); text-shadow: 0 0 10px rgba(182, 255, 90, 0.5); }

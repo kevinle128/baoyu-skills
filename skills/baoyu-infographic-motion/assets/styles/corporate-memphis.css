@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=block");
+
+:root {
+  --bg: #fdf5ec;
+  --bg2: #f8e9dc;
+  --panel: #ffffff;
+  --panel2: #f6f1fb;
+  --ink: #1e1b3a;
+  --muted: #676482;
+  --line: #ebe1f0;
+  --grid: rgba(30, 27, 58, 0.04);
+  --c1: #6a4cf4;
+  --c2: #0fa596;
+  --c3: #f46a3c;
+  --c4: #e8a300;
+  --c5: #ec4f84;
+  --c6: #2f7cf6;
+  --accent: var(--c1);
+  --radius: 26px;
+  --bw: 2px;
+  --shadow: 0 14px 30px -18px rgba(76, 52, 160, 0.35), 0 2px 0 rgba(30, 27, 58, 0.03);
+  --glow: 0.6;
+  --font-display: "Poppins", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "DM Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "DM Mono", Menlo, monospace;
+  --title-size: 58px;
+  --title-weight: 800;
+  --title-case: none;
+  --title-track: -0.025em;
+  --label-case: uppercase;
+  --code-bg: #262251;
+  --code-ink: #ecebff;
+  --code-accent: #ffc94d;
+}
+
+.mi-page { background-color: var(--bg); }
+.mi-grid-bg { background-image: none; }
+.mi-page::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(circle, #ffcf5c 0 120px, transparent 121px) calc(100% + 190px) -170px / 300px 300px no-repeat,
+    radial-gradient(circle, #b9abff 0 90px, transparent 91px) -120px calc(100% + 120px) / 180px 180px no-repeat,
+    radial-gradient(circle, rgba(236, 79, 132, 0.45) 3px, transparent 3.6px) 14px 30% / 20px 20px no-repeat,
+    radial-gradient(circle, rgba(236, 79, 132, 0.45) 3px, transparent 3.6px) 14px calc(30% + 20px) / 20px 20px no-repeat,
+    radial-gradient(circle, rgba(236, 79, 132, 0.45) 3px, transparent 3.6px) 14px calc(30% + 40px) / 20px 20px no-repeat,
+    radial-gradient(circle, rgba(15, 165, 150, 0.6) 3px, transparent 3.6px) calc(100% - 16px) 74% / 20px 20px no-repeat,
+    radial-gradient(circle, rgba(15, 165, 150, 0.6) 3px, transparent 3.6px) calc(100% - 16px) calc(74% + 20px) / 20px 20px no-repeat,
+    conic-gradient(from 135deg at 50% 50%, #ff9a73 0 90deg, transparent 90deg) calc(100% + 45px) 36% / 90px 90px no-repeat,
+    radial-gradient(ellipse 420px 300px at 92% 70%, #efe7ff 0 99%, transparent 100%),
+    radial-gradient(ellipse 360px 240px at 4% 64%, #dcf4ee 0 99%, transparent 100%),
+    radial-gradient(ellipse 300px 150px at 60% 0%, #ffe3d6 0 99%, transparent 100%);
+  background-repeat: no-repeat;
+  animation: mi-memphis-a 12s ease-in-out infinite alternate;
+}
+.mi-page::after {
+  content: "";
+  position: absolute; left: -60px; top: 50%; width: 120px; height: 120px; z-index: 0; pointer-events: none;
+  border-radius: 50%;
+  border: 14px solid #0fa596;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  opacity: 0.5;
+  animation: mi-memphis-b 16s linear infinite;
+}
+@keyframes mi-memphis-a { from { transform: translateY(0); } to { transform: translateY(14px); } }
+@keyframes mi-memphis-b { to { transform: rotate(360deg); } }
+.mi-card, .mi-stat { border-color: transparent; }
+.mi-card h3, .mi-h { letter-spacing: -0.02em; text-transform: none; }
+.mi-title em {
+  color: var(--accent);
+  background: linear-gradient(transparent 58%, color-mix(in oklab, var(--c4) 45%, transparent) 58% 90%, transparent 90%);
+  padding: 0 4px;
+}
+.mi-crumb { color: #fff; background: var(--accent); padding: 4px 14px; border-radius: 999px; font-weight: 500; }
+.mi-rule { height: 6px; border-radius: 6px; background: var(--line); }
+.mi-rule::after { top: 0; height: 6px; border-radius: 6px; }
+.mi-row { border: 0; border-radius: 16px; }
+.mi-row[data-item] { border-left: 0; box-shadow: inset 6px 0 0 color-mix(in oklab, var(--item, var(--accent)) calc(40% + var(--on, 0) * 60%), var(--line)); }
+.mi-code { border-radius: 18px; }
+.mi-stat { background: linear-gradient(160deg, color-mix(in oklab, var(--item, var(--accent)) 12%, #fff), #fff 60%); }
+.mi-bar { background: #efe8f6; }
+.mi-edge { stroke: #e2d7ee; stroke-width: 3; stroke-dasharray: 2 9; stroke-linecap: round; }
+.mi-beam { stroke-width: 4; }
+.mi-chip, .mi-badge { border: 0; background: color-mix(in oklab, var(--item, var(--accent)) 14%, transparent); font-weight: 500; }
+.mi-foot .mark { font-family: var(--font-display); }

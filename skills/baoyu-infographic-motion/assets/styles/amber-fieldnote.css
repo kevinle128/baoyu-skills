@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=block");
+
+:root {
+  --bg: #0c0a09;
+  --bg2: #120f0c;
+  --panel: #13100d;
+  --panel2: #1a1510;
+  --ink: #f1e4c8;
+  --muted: #a08a68;
+  --line: #3a2c1c;
+  --grid: rgba(138, 90, 42, 0.07);
+  --c1: #f2c46d;
+  --c2: #e04a3a;
+  --c3: #e8955a;
+  --c4: #c9b48a;
+  --c5: #d9a441;
+  --c6: #9fb39a;
+  --accent: var(--c1);
+  --radius: 2px;
+  --bw: 1px;
+  --shadow: none;
+  --glow: 0.6;
+  --font-display: "Oswald", "Bebas Neue", "Arial Narrow", sans-serif;
+  --font-body: "IBM Plex Mono", Menlo, monospace;
+  --font-mono: "IBM Plex Mono", Menlo, monospace;
+  --title-size: 64px;
+  --title-weight: 600;
+  --title-case: uppercase;
+  --title-track: 0.015em;
+  --label-case: uppercase;
+  --code-bg: #0a0807;
+  --code-ink: #ead9b6;
+  --code-accent: #f2c46d;
+}
+
+.mi-page::before, .mi-page::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.mi-page::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cg stroke='%238a5a2a' stroke-width='.8' fill='none' opacity='.8'%3E%3Cpath d='M40 60L96 32L150 88L96 132L40 60M150 88L214 60L262 118L206 170L150 88M96 132L120 206L206 170M120 206L62 250L150 290L232 262L206 170M262 118L300 200L232 262M40 60L14 150L62 250'/%3E%3C/g%3E%3Cg fill='%23f2c46d' opacity='.6'%3E%3Ccircle cx='40' cy='60' r='2'/%3E%3Ccircle cx='96' cy='32' r='1.5'/%3E%3Ccircle cx='150' cy='88' r='2.4'/%3E%3Ccircle cx='96' cy='132' r='1.5'/%3E%3Ccircle cx='214' cy='60' r='1.5'/%3E%3Ccircle cx='262' cy='118' r='2'/%3E%3Ccircle cx='206' cy='170' r='2.6'/%3E%3Ccircle cx='120' cy='206' r='1.5'/%3E%3Ccircle cx='62' cy='250' r='2'/%3E%3Ccircle cx='150' cy='290' r='1.5'/%3E%3Ccircle cx='232' cy='262' r='2'/%3E%3Ccircle cx='300' cy='200' r='1.5'/%3E%3Ccircle cx='14' cy='150' r='1.5'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 320px 320px;
+  opacity: 0.95;
+  -webkit-mask: radial-gradient(75% 60% at 50% 50%, #000 20%, transparent 90%);
+  mask: radial-gradient(75% 60% at 50% 50%, #000 20%, transparent 90%);
+  animation: af-drift 8s ease-in-out infinite;
+}
+.mi-page::after {
+  background:
+    radial-gradient(60% 40% at 50% 50%, rgba(242, 196, 109, 0.06), transparent 70%),
+    radial-gradient(130% 100% at 50% 50%, transparent 55%, rgba(0, 0, 0, 0.6));
+}
+@keyframes af-drift { 0%, 100% { translate: 0 0; } 25% { translate: 3px -2px; } 50% { translate: -2px 3px; } 75% { translate: 2px 2px; } }
+
+.mi-title { color: var(--c1); }
+.mi-title em { color: var(--ink); background: linear-gradient(var(--c2), var(--c2)) 0 94% / 100% 5px no-repeat; }
+.mi-crumb { color: var(--c1); }
+.mi-sub { color: var(--ink); }
+.mi-sub .sep { color: var(--c2); }
+.mi-rule { height: 1px; background: #5a3d20; }
+.mi-rule::after { height: 3px; top: -1px; }
+.mi-card, [data-item].mi-card {
+  background: var(--panel);
+  border-color: color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 100%), #4a3520);
+  box-shadow: inset 4px 0 0 color-mix(in oklab, var(--c2) calc(var(--on, 0) * 100%), transparent), 0 0 calc(var(--on, 0) * 28px * var(--glow)) color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 40%), transparent);
+}
+.mi-card h3 { color: var(--c1); font-weight: 600; letter-spacing: 0.02em; }
+.mi-label { letter-spacing: 0.14em; }
+.mi-stat { background: transparent; border-color: #4a3520; border-width: 1px 0 0 0; border-radius: 0; box-shadow: none; }
+.mi-stat-v { font-weight: 500; font-size: 54px; }
+.mi-row { background: #17120d; border-color: #2e2317; }
+.mi-code { border: 1px solid #3a2c1c; }
+.mi-code-line b { color: #7a6040; opacity: 1; }
+.mi-edge { stroke: #5a3d20; stroke-width: 1.2; }
+.mi-beam { stroke-width: 2.5; filter: drop-shadow(0 0 4px var(--item, var(--accent))); }
+.mi-bar { background: #2a2016; border-radius: 0; height: 6px; }
+.mi-bar > i { border-radius: 0; }
+.mi-chip, .mi-badge { border-radius: 0; }
+.mi-foot .mark { font-family: var(--font-display); letter-spacing: 0.06em; text-transform: uppercase; color: var(--c1); }

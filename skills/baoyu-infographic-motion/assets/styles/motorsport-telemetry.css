@@ -1,0 +1,99 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira:ital,wdth,wght@1,112.5,700;1,112.5,800;1,112.5,900&family=Titillium+Web:ital,wght@0,400;0,600;0,700;1,700&family=Roboto+Mono:wght@400;500;700&display=block");
+
+:root {
+  --bg: #0b0b0d;
+  --bg2: #111114;
+  --panel: #141418;
+  --panel2: #1b1b20;
+  --ink: #f5f5f7;
+  --muted: #9c9da6;
+  --line: #2d2e35;
+  --grid: rgba(255, 255, 255, 0.025);
+  --c1: #ff2a1a;
+  --c2: #b97cff;
+  --c3: #1fe06a;
+  --c4: #ffd400;
+  --c5: #38c8ff;
+  --c6: #ff8a1c;
+  --accent: var(--c1);
+  --radius: 3px;
+  --bw: 1px;
+  --shadow: 0 16px 30px -18px rgba(0, 0, 0, 0.95);
+  --glow: 0.75;
+  --font-display: "Saira", "Arial Black", sans-serif;
+  --font-body: "Titillium Web", "Arial Narrow", sans-serif;
+  --font-mono: "Roboto Mono", Menlo, monospace;
+  --title-size: 54px;
+  --title-weight: 900;
+  --title-case: uppercase;
+  --title-track: -0.01em;
+  --label-case: uppercase;
+  --code-bg: #08080a;
+  --code-ink: #e9e9ee;
+  --code-accent: #ff4a3a;
+}
+
+.mi-page { font-stretch: 112.5%; }
+.mi-page.mi-grid-bg { background-image: none; }
+.mi-page::before, .mi-page::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.mi-page::before {
+  background:
+    radial-gradient(120% 70% at 20% 0%, rgba(255, 42, 26, 0.10), transparent 60%),
+    linear-gradient(180deg, transparent, rgba(11, 11, 13, 0.55) 80%),
+    linear-gradient(27deg, #121215 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #121215 5px, transparent 5px) 10px 0,
+    linear-gradient(27deg, #222227 5px, transparent 5px) 0 10px,
+    linear-gradient(207deg, #222227 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #17171a 10px, transparent 10px),
+    linear-gradient(#18181c 25%, #151518 25%, #151518 50%, transparent 50%, transparent 75%, #25252b 75%, #25252b);
+  background-color: #111114;
+  background-size: 100% 100%, 100% 100%, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px, 20px 20px;
+}
+.mi-page::after {
+  inset: -10% -20%;
+  rotate: -7deg;
+  background-image:
+    linear-gradient(90deg, transparent 0 55%, rgba(255, 42, 26, 0.8) 72%, transparent 72.4%),
+    linear-gradient(90deg, transparent 0 18%, rgba(255, 255, 255, 0.4) 30%, transparent 30.3%),
+    linear-gradient(90deg, transparent 0 40%, rgba(255, 42, 26, 0.6) 62%, transparent 62.3%),
+    linear-gradient(90deg, transparent 0 8%, rgba(255, 255, 255, 0.3) 26%, transparent 26.2%),
+    linear-gradient(90deg, transparent 0 66%, rgba(255, 138, 28, 0.6) 80%, transparent 80.3%),
+    linear-gradient(90deg, transparent 0 30%, rgba(255, 255, 255, 0.32) 45%, transparent 45.2%);
+  background-size: 1400px 3px, 1400px 2px, 1400px 4px, 1400px 2px, 1400px 3px, 1400px 2px;
+  background-repeat: repeat-x;
+  background-position: 0 14%, 300px 27%, 700px 41%, 200px 58%, 900px 73%, 500px 88%;
+  animation: mt-streak 2s linear infinite;
+}
+@keyframes mt-streak {
+  from { background-position: 0 14%, 300px 27%, 700px 41%, 200px 58%, 900px 73%, 500px 88%; }
+  to { background-position: -1400px 14%, -1100px 27%, -700px 41%, -1200px 58%, -500px 73%, -900px 88%; }
+}
+
+.mi-title { font-style: italic; color: #fff; }
+.mi-title em { font-style: italic; color: var(--c1); }
+.mi-crumb { color: var(--c1); font-weight: 700; }
+.mi-sub { color: #fff; font-family: var(--font-display); font-style: italic; font-weight: 700; }
+.mi-sub .sep { color: var(--c1); }
+.mi-rule { height: 3px; background: repeating-linear-gradient(115deg, #2a2b31 0 10px, #1a1a1e 10px 20px); }
+.mi-rule::after { height: 3px; top: 0; background: linear-gradient(90deg, #fff, var(--accent) 30%); box-shadow: 0 0 14px var(--accent); }
+.mi-page .mi-card, .mi-page .mi-stat {
+  background-image:
+    linear-gradient(115deg, var(--item, var(--accent)) 0 34px, transparent 34px),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 40%);
+  background-size: 44px 5px, 100% 100%;
+  background-position: 0 0, 0 0;
+  background-repeat: no-repeat;
+}
+.mi-card h3, .mi-h { font-style: italic; font-weight: 800; }
+.mi-stat-v { font-style: italic; font-weight: 900; }
+.mi-row { border-radius: 2px; font-family: var(--font-mono); }
+.mi-label { font-weight: 500; }
+.mi-code { border: 1px solid #25252b; border-left: 3px solid var(--c1); }
+.mi-code-line b { color: #6c6d76; opacity: 1; }
+.mi-edge { stroke: #34353c; }
+.mi-beam { filter: drop-shadow(0 0 5px var(--item, var(--accent))); }
+.mi-bar { background: #26272d; border-radius: 0; }
+.mi-bar > i { border-radius: 0; background: linear-gradient(90deg, color-mix(in oklab, var(--item, var(--accent)) 60%, #000), var(--item, var(--accent))); }
+.mi-chip, .mi-badge { border-radius: 2px; font-style: italic; font-weight: 700; }
+.mi-hub { border-radius: 6px; }
+.mi-foot .mark { font-style: italic; font-weight: 900; }
