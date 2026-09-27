@@ -1,6 +1,6 @@
 ---
 name: baoyu-infographic-motion
-description: Generates animated infographics as HTML/CSS/JS and exports them to MP4 (with synthesized sound effects), GIF and a PNG poster. Offers 20 motion layouts and 41 visual styles, with a deterministic frame-by-frame renderer so videos loop seamlessly. Use when the user asks for an "animated infographic", "motion infographic", "infographic video", "GIF infographic", "动态信息图", "信息图视频", "infographic động", or wants an existing infographic to move.
+description: Generates animated infographics as HTML/CSS/JS and exports them to MP4 (with synthesized sound effects), GIF and a PNG poster. Offers 25 motion layouts and 46 visual styles, with a deterministic frame-by-frame renderer so videos loop seamlessly. Use when the user asks for an "animated infographic", "motion infographic", "infographic video", "GIF infographic", "动态信息图", "信息图视频", "infographic động", or wants an existing infographic to move.
 version: 1.0.0
 metadata:
   openclaw:
@@ -68,13 +68,13 @@ equivalent). If skipped, state the assumed choices before building.
 |--------|--------|
 | `--layout` | See Layout Gallery. Default: pick from content |
 | `--style` | See Style Gallery. Default: `light-dashboard` |
-| `--canvas` | `portrait` 1080×1350 (default), `square` 1080×1080, `story` 1080×1920, `landscape` 1920×1080, `WxH` |
+| `--canvas` | `portrait` 1080×1350 (default), `square` 1080×1080, `story` 1080×1920, `landscape` 1920×1080, `paper` 1200×1600 (3:4, export `--scale 1.5` → 1800×2400), `WxH` |
 | `--sfx` | `soft` (default), `music`, `none` |
 | `--format` | Any of `mp4,gif,png` (default all) |
 | `--lang` | Language of on-screen text |
 | `--no-confirm` | Skip Step 4 |
 
-## Layout Gallery (20)
+## Layout Gallery (25)
 
 | Layout | Shows | Motion |
 |--------|-------|--------|
@@ -98,10 +98,15 @@ equivalent). If skipped, state the assumed choices before building.
 | `winding-roadmap` | Journey, milestones | Dot travels an S-curve, milestone pops |
 | `venn-diagram` | Overlaps | Circles pulse, intersection highlights |
 | `periodic-table` | Categorized collection | Cell spotlight + detail panel swap |
+| `file-tree-anatomy` | Anatomy of a project / agent as a folder tree (canvas `paper`) | Highlight band steps down the tree, dots run the trunk, annotations get a reading sweep |
+| `source-listing` | One source file: prompt, config, YAML (canvas `1200x1800`) | Grep search filters lines, active block bar, selection sweep, minimap thumb |
+| `ranked-leaderboard` | Top-N list with values (canvas `paper`) | Grep filter by track, scattered spotlight, terminal types `git clone`, star counts scramble |
+| `swarm-fanout` | Coordinator → many parallel agents → lead → report (canvas `1600x1200`, builds up from empty) | Lane-by-lane dot clouds light up, packets converge, live terminal + agent tree |
+| `paper-page` | Research paper / white paper page (canvas `paper`) | Decision diamonds flip, chip queries the active node, matching text phrase, code line and table row highlight |
 
 Full definition + tested HTML skeleton: `references/layouts/<layout>.md`.
 
-## Style Gallery (41)
+## Style Gallery (46)
 
 | Style | Look |
 |-------|------|
@@ -109,7 +114,12 @@ Full definition + tested HTML skeleton: `references/layouts/<layout>.md`.
 | `clean-light-cards` | Airy white cards, soft shadows |
 | `light-terminal` | Light dashboard with LCD digits |
 | `paper-doc` | Cream paper, serif titles, academic |
-| `white-paper` | Corporate / consulting white paper: white, navy, one accent, serif headline |
+| `white-paper` | LaTeX / IEEE research paper: monochrome, serif, two columns, Fig. + TABLE (made for `paper-page`) |
+| `consulting-report` | Corporate / consulting report: white, navy, one teal accent, serif headline |
+| `cream-brutal` | Cream page, heavy black caps, hard shadows, file pills, handwritten tagline |
+| `ide-slate` | Dark code editor, mono, gold accent, selection highlights |
+| `github-dark` | GitHub README as a poster, huge Inter headline |
+| `editorial-ops` | Light ops newsroom, serif headline, periwinkle, marquee band |
 | `cream-pastel` | Notebook pastel |
 | `amber-fieldnote` | Warm field-notebook amber on dark |
 | `terminal-amber` | Amber terminal on black |
@@ -158,7 +168,12 @@ Details (palette, fonts, pairings, sound, GIF notes): `references/styles/<style>
 | Concept map / ecosystem | `orbit-panel` + `neon-constellation` | soft |
 | Many inputs → one outcome | `fan-in` + `gold-dust` | soft |
 | Paper reading notes | `doc-terminal` + `paper-doc` | soft |
-| Business report / white paper | `funnel` or `comparison-matrix` + `white-paper` | soft |
+| White paper / technical note | `paper-page` + `white-paper` (canvas `paper`) | music |
+| Agent / repo anatomy | `file-tree-anatomy` + `cream-brutal` | music |
+| Prompt, config, codebase tour | `source-listing` + `ide-slate` | soft |
+| Top repos / tools list | `ranked-leaderboard` + `github-dark` | music |
+| Multi-agent system | `swarm-fanout` + `editorial-ops` | music |
+| Business / consulting report | `funnel` or `comparison-matrix` + `consulting-report` | soft |
 | Metrics / report | `live-dashboard` + `light-terminal` | soft |
 | Process / tutorial | `linear-progression` + `clean-light-cards` | soft |
 | Marketing funnel | `funnel` + `mesh-gradient` | music |
@@ -225,7 +240,7 @@ Ask in one call (see User Input Tools):
 | Priority | Question | When |
 |----------|----------|------|
 | 1 | Combination (layout + style + sound) | Always |
-| 2 | Canvas | Always |
+| 2 | Canvas | Only when the layout does not fix one (see Layout Gallery) |
 | 3 | Outputs (MP4 + GIF + PNG / MP4 only / GIF only) and length (cycles) | Always |
 | 4 | Language | Only if source language ≠ user language |
 
@@ -274,6 +289,6 @@ first-time setup, or ask "reconfigure baoyu-infographic-motion preferences".
 - `references/html-contract.md` — page structure, `<body>` settings, rules
 - `references/motion-primitives.md` — every `data-*` primitive
 - `references/sfx.md` — sound profiles and cues
-- `references/layouts/<layout>.md` — 20 layouts with tested skeletons
-- `references/styles/<style>.md` — 41 styles
+- `references/layouts/<layout>.md` — 25 layouts with tested skeletons
+- `references/styles/<style>.md` — 46 styles
 - `references/analysis-framework.md`, `references/structured-content-template.md` — content analysis

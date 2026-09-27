@@ -1,101 +1,65 @@
-@import url("https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=block");
+@import url("https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inconsolata:wght@400;600&display=block");
 
 :root {
   --bg: #ffffff;
-  --bg2: #f4f6f9;
+  --bg2: #f4f4f4;
   --panel: #ffffff;
-  --panel2: #f5f7fa;
-  --ink: #0e2240;
-  --muted: #5a6679;
-  --line: #d9dfe7;
+  --panel2: #f3f3f3;
+  --ink: #111111;
+  --muted: #555555;
+  --line: #c9c9c9;
   --grid: transparent;
-  --c1: #007c7a;
-  --c2: #16345f;
-  --c3: #3a6cb0;
-  --c4: #66758b;
-  --c5: #1d7f94;
-  --c6: #a0671c;
+  --c1: #111111;
+  --c2: #333333;
+  --c3: #4d4d4d;
+  --c4: #666666;
+  --c5: #7f7f7f;
+  --c6: #999999;
   --accent: var(--c1);
-  --radius: 2px;
+  --radius: 1px;
   --bw: 1px;
   --shadow: none;
-  --glow: 0.15;
-  --font-display: "Newsreader", "Source Serif Pro", Georgia, serif;
-  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "IBM Plex Mono", Menlo, monospace;
-  --title-size: 62px;
-  --title-weight: 500;
+  --glow: 0;
+  --pad: 56px;
+  --font-display: "STIX Two Text", "Latin Modern Roman", "Times New Roman", serif;
+  --font-body: "STIX Two Text", "Latin Modern Roman", "Times New Roman", serif;
+  --font-mono: "Inconsolata", "Courier New", monospace;
+  --title-size: 56px;
+  --title-weight: 700;
   --title-case: none;
-  --title-track: -0.022em;
-  --label-case: uppercase;
-  --code-bg: #0e2240;
-  --code-ink: #d9e2ef;
-  --code-accent: #5fd0c6;
+  --title-track: -0.005em;
+  --label-case: none;
+  --code-bg: #f4f4f4;
+  --code-ink: #111111;
+  --code-accent: #111111;
 }
 
-.mi-page.mi-grid-bg { background-image: none; }
-.mi-page::before, .mi-page::after { content: ""; position: absolute; z-index: 0; pointer-events: none; }
-.mi-page::before {
-  inset: 0 0 auto 0;
-  height: 6px;
-  background: var(--ink);
-}
-.mi-page::after {
-  inset: 0 0 auto 0;
-  height: 6px;
-  background: linear-gradient(90deg, transparent, var(--accent) 30%, #3fc1b6 50%, var(--accent) 70%, transparent) no-repeat;
-  background-size: 34% 100%;
-  animation: wp-sweep 9s linear infinite;
-}
-@keyframes wp-sweep { 0% { background-position: -60% 0; } 100% { background-position: 160% 0; } }
-
-.mi-top { font-family: var(--font-body); font-size: 14px; letter-spacing: 0.12em; font-weight: 600; }
-.mi-crumb { font-family: var(--font-body); color: var(--accent); }
-.mi-meta { font-family: var(--font-mono); font-weight: 400; letter-spacing: 0.06em; }
-.mi-title { font-variation-settings: "opsz" 72; line-height: 1.04; color: var(--ink); }
-.mi-title em {
-  font-style: normal;
-  color: var(--accent);
-  background: linear-gradient(100deg, transparent 40%, rgba(255, 255, 255, 0.85) 50%, transparent 60%) no-repeat,
-    linear-gradient(color-mix(in oklab, var(--accent) 14%, transparent), color-mix(in oklab, var(--accent) 14%, transparent)) no-repeat;
-  background-size: 250% 100%, 100% 0.3em;
-  background-position: 150% 0, 0 88%;
-  animation: wp-gloss 9s ease-in-out infinite;
-}
-@keyframes wp-gloss { 0%, 55% { background-position: 150% 0, 0 88%; } 85%, 100% { background-position: -50% 0, 0 88%; } }
-.mi-sub { font-family: var(--font-body); color: var(--ink); font-size: 15px; font-weight: 500; letter-spacing: 0.1em; }
-.mi-sub .sep { color: var(--accent); }
-.mi-rule { height: 1px; background: var(--line); }
-.mi-rule::after { height: 3px; top: -1px; background: var(--accent); }
-
-.mi-label { font-size: 12.5px; letter-spacing: 0.12em; color: var(--muted); }
-.mi-label.acc { color: var(--accent); font-weight: 500; }
-.mi-card { background: var(--panel); border-color: var(--line); box-shadow: inset 0 2px 0 var(--ink); }
-[data-item].mi-card, .mi-card[data-item] {
-  border-color: color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 55%), var(--line));
-  box-shadow: inset 0 calc(2px + var(--on, 0) * 2px) 0 color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 100%), var(--ink));
-  background: color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 4%), var(--panel));
-}
-.mi-card h3, .mi-h { font-weight: 500; font-variation-settings: "opsz" 48; letter-spacing: -0.015em; }
-
-.mi-stat { border: 0; border-radius: 0; box-shadow: none; padding-left: 0; padding-right: 0;
-  background: linear-gradient(var(--item, var(--accent)), var(--item, var(--accent))) 0 0 / 56px 3px no-repeat,
-    linear-gradient(var(--ink), var(--ink)) 0 1px / 100% 1px no-repeat; }
-.mi-stat-v { font-weight: 500; font-variation-settings: "opsz" 72; letter-spacing: -0.02em; }
-.mi-stat-l { font-family: var(--font-body); font-weight: 500; letter-spacing: 0.1em; font-size: 12.5px; }
-
-.mi-row { background: var(--panel2); border-color: #e3e8ee; border-radius: 2px; font-family: var(--font-body); font-size: 15px; }
-.mi-row[data-item] { border-left-width: 3px; }
-.mi-code { border-radius: 2px; }
-.mi-code-line b { opacity: 0.55; }
-.mi-chip, .mi-badge { border-radius: 2px; font-weight: 500; border-color: color-mix(in oklab, var(--item, var(--accent)) 45%, #fff); background: color-mix(in oklab, var(--item, var(--accent)) 7%, #fff); }
-.mi-bar { height: 6px; border-radius: 0; background: #e6eaf0; }
-.mi-bar > i { border-radius: 0; }
-.mi-edge { stroke: #c3ccd8; stroke-width: 1.25; }
-.mi-beam { stroke-width: 2.25; }
+.mi-page { font-variant-numeric: lining-nums; }
+.mi-crumb, .mi-meta, .mi-foot { font-family: var(--font-body); letter-spacing: 0; }
+.mi-crumb { color: var(--ink); }
+.mi-title em { color: var(--ink); font-style: italic; }
+.mi-sub { font-family: var(--font-body); font-style: italic; color: var(--muted); letter-spacing: 0; }
+.mi-sub .sep { font-style: normal; }
+.mi-rule { height: 1px; background: var(--ink); }
+.mi-rule::after { height: 3px; top: -1px; background: var(--ink); }
+.mi-label { font-family: var(--font-body); font-variant: small-caps; letter-spacing: 0.08em; font-size: 15px; }
+.mi-card { border-color: var(--ink); }
+[data-item].mi-card { background: color-mix(in oklab, var(--ink) calc(var(--on, 0) * 5%), var(--panel)); outline: calc(var(--on, 0) * 1px) solid var(--ink); }
+.mi-card h3, .mi-h { font-weight: 700; letter-spacing: 0; }
+.mi-stat { background: transparent; border: 0; border-top: 1.5px solid var(--ink); border-bottom: 0.75px solid var(--ink); border-radius: 0; padding-left: 0; padding-right: 0; }
+.mi-stat-v { font-weight: 700; }
+.mi-stat-l { font-family: var(--font-body); font-variant: small-caps; letter-spacing: 0.06em; font-size: 15px; }
+.mi-row { background: transparent; border: 0; border-bottom: 0.75px solid var(--line); border-radius: 0; }
+.mi-row[data-item] { background: color-mix(in oklab, var(--ink) calc(var(--on, 0) * 8%), transparent); border-left-color: color-mix(in oklab, var(--ink) calc(var(--on, 0) * 100%), transparent); }
+.mi-code { border-radius: 0; box-shadow: inset 0 1.5px 0 var(--ink), inset 0 -1.5px 0 var(--ink); }
+.mi-code .k { font-weight: 600; }
+.mi-code-line { border-left: 3px solid color-mix(in oklab, var(--ink) calc(var(--on, 0) * 100%), transparent); border-radius: 0; background: color-mix(in oklab, var(--ink) calc(var(--on, 0) * 10%), transparent); }
+.mi-chip, .mi-badge { border-radius: 0; font-family: var(--font-body); font-variant: small-caps; letter-spacing: 0.06em; font-size: 15px; }
+.mi-bar { height: 6px; border-radius: 0; background: var(--bg2); outline: 0.75px solid var(--ink); }
+.mi-bar > i { border-radius: 0; background: repeating-linear-gradient(-45deg, var(--ink) 0 1.5px, transparent 1.5px 5px); }
+.mi-edge { stroke: var(--ink); stroke-width: 1.25; stroke-dasharray: 5 4; }
+.mi-beam { stroke-width: 1.75; }
 .mi-beam-dot { filter: none; }
-.mi-hub { background: var(--panel); border-width: 1.5px; box-shadow: 0 0 0 calc(4px + var(--pulse, 0.5) * 8px) color-mix(in oklab, var(--accent) 8%, transparent); }
-
-.mi-foot { font-family: var(--font-body); font-size: 12.5px; letter-spacing: 0.08em; }
-.mi-foot::before { content: ""; position: absolute; left: 0; right: 0; top: -11px; height: 1px; background: var(--line); }
-.mi-foot .mark { font-family: var(--font-display); font-weight: 600; font-size: 19px; letter-spacing: -0.01em; }
+.mi-hub { border-radius: 0; background: var(--panel); box-shadow: 0 0 0 calc(3px + var(--pulse, 0.5) * 4px) var(--bg), 0 0 0 calc(4px + var(--pulse, 0.5) * 4px) var(--ink); border-width: 1.5px; }
+.mi-caret { background: var(--ink); }
+.mi-foot .mark { font-family: var(--font-display); font-style: italic; font-weight: 600; }

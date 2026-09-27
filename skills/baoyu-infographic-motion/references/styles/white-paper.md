@@ -1,14 +1,14 @@
 # white-paper
 
-Premium consulting / research-report look: a pure white page, deep navy ink and one confident teal accent.
-Sentence-case editorial serif headlines, clean grotesk body, hairline rules, flat cards with a navy top rule
-and "Exhibit"-style kicker labels.
+LaTeX / IEEE research paper in pure grayscale: a white page, near-black ink, a STIX serif close to Computer Modern,
+small-caps labels, hairline booktabs rules and a light code listing between top and bottom rules. Every colour token
+is black or a gray step, so emphasis comes from ink fills, hatching, weight and italics, not hue.
 
-- **Mood**: authoritative, calm, board-ready: "consulting insight report" or "research report"
-- **Palette**: bg `#ffffff`, ink `#0e2240`, teal accent `#007c7a`, navy `#16345f`, cobalt `#3a6cb0`, slate `#66758b`, cyan-teal `#1d7f94`, ochre `#a0671c`, hairline `#d9dfe7`
-- **Fonts**: Newsreader 500 (titles, card heads, big numbers), Inter (body, kickers, footer), IBM Plex Mono (small labels and meta)
-- **Ambient motion**: a thin teal highlight sweeps along the navy top bar (9 s). A faint gloss passes over the tinted marker under the accent word. Both are subtle and loop seamlessly.
-- **Best for**: strategy and market reports, benchmarks, KPI reviews, funnels, "state of X" findings, executive summaries
-- **Pairs with**: `comparison-matrix`, `funnel`, `linear-progression`, `doc-terminal`, `live-dashboard`, `binary-comparison`, `hierarchical-layers`, `bento-grid`, `winding-roadmap`, `card-pipeline`
-- **Sound**: `soft`
-- **GIF**: mostly white with flat navy and teal, compresses very well. Use no dither or light dither.
+- **Mood**: academic, sober, "an animated figure from a working paper"
+- **Palette**: bg `#ffffff`, ink `#111111`, muted `#555555`, rule `#c9c9c9`, listing `#f4f4f4`; `--c1`…`--c6` = `#111111`, `#333333`, `#4d4d4d`, `#666666`, `#7f7f7f`, `#999999` (accent = `--c1`)
+- **Fonts**: STIX Two Text (title and body, the closest Google Font to Computer Modern), Inconsolata (code, numbers in tables). Section heads and labels use small caps; `--title-case` and `--label-case` are `none`
+- **Ambient motion**: none in the style. All motion comes from the layout: ink fills, highlight boxes, packets and cursors. Dashed `.mi-edge` connectors, hatched `.mi-bar` fills and a hub ring that breathes with `--pulse`
+- **Best for**: research notes, technical working papers, RFC-style explainers, agent / system loops told as a paper figure
+- **Pairs with**: `paper-page` (designed for it: canvas `paper`, running header, figure, two-column body, code listing, IEEE table); also works with `doc-terminal`. Layouts that tell items apart only by colour (`venn-diagram`, `cluster-map`, `periodic-table`, colour-coded `bento-grid` or `comparison-matrix` columns) lose meaning in monochrome: use them only when labels, position or hatching carry the difference
+- **Sound**: `music` with `paper-page` (kick on the chip-pin beat, `blip` per decision); `soft` for calm list layouts
+- **GIF**: almost pure black and white, the smallest GIFs of all styles. Use no dither so hatching and dotted lines stay crisp

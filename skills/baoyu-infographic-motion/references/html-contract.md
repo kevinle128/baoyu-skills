@@ -42,7 +42,7 @@ Every animated infographic is one folder with four files. `main.ts init` creates
 
 | Attribute | Default | Meaning |
 |-----------|---------|---------|
-| `data-canvas` | `portrait` | `portrait` 1080×1350, `square` 1080×1080, `story` 1080×1920, `landscape` 1920×1080, or `WxH` |
+| `data-canvas` | `portrait` | `portrait` 1080×1350, `square` 1080×1080, `story` 1080×1920, `landscape` 1920×1080, `paper` 1200×1600 (3:4 document page; export with `--scale 1.5` for 1800×2400), or `WxH` |
 | `data-cycles` | `2` | Video length = master cycle period × cycles (+ outro) |
 | `data-duration` | — | Fixed length in seconds. Overrides `data-cycles` |
 | `data-outro` | `0` | Extra seconds at the end with no cycle cues (for an outro banner) |
@@ -77,6 +77,8 @@ Set a per-element colour with `style="--item: var(--c3)"`. Style tokens: `--c1`�
 
 1. **Frame 0 is the finished infographic.** Everything is visible at t = 0. Motion keeps the picture alive
    (highlight cycle, packets, pulses). Do not build the page from empty. Use `data-enter` only for an outro.
+   Exception: a layout may build up from empty when its reference format does (e.g. `swarm-fanout`); then
+   `data-poster` must point at the full state and the layout md must say so.
 2. **All motion comes from the clock.** Style with the CSS variables that the runtime writes
    (`--on`, `--p`, `--done`, `--value`, `--pulse`, `--phase`, `--in`, `--flash`). Do not use CSS
    `transition`, do not toggle classes from your own timers, do not use `setInterval` / `requestAnimationFrame`.
@@ -88,7 +90,11 @@ Set a per-element colour with `style="--item: var(--c3)"`. Style tokens: `--c1`�
    Minimum font size 12 px at 1080 wide.
 5. **Fonts.** Only Google Fonts through `@import` in the style file, or system fonts. The runtime waits for
    fonts before it measures connectors.
-6. **Connectors.** Use `data-link="#a #b"` on `<path>` inside `.mi-svg`. Do not hand-write coordinates.
-7. **Loop length.** Pick `data-step` × items × `data-cycles` between 12 and 30 s. Nested cycles loop best
+6. **Reserved names.** The runtime writes `--mi-w` / `--mi-h` (canvas size) on `<html>` and per-item variables
+   (`--on`, `--p`, `--done`, `--age`, `--value`, …). Do not reuse these names for your own variables.
+   With `data-order`, every item needs an explicit `data-index` or a stable document order, because
+   order numbers refer to item numbers.
+7. **Connectors.** Use `data-link="#a #b"` on `<path>` inside `.mi-svg`. Do not hand-write coordinates.
+8. **Loop length.** Pick `data-step` × items × `data-cycles` between 12 and 30 s. Nested cycles loop best
    when their period divides the master period.
-8. **Offline safe.** No external scripts, no network calls except Google Fonts.
+9. **Offline safe.** No external scripts, no network calls except Google Fonts.

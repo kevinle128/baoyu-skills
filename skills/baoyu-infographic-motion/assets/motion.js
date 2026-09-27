@@ -4,6 +4,7 @@
     square: [1080, 1080],
     story: [1080, 1920],
     landscape: [1920, 1080],
+    paper: [1200, 1600],
   };
   const query = new URLSearchParams(location.search);
   const EXPORT = query.has("export");
@@ -46,8 +47,8 @@
     const m = /^(\d+)x(\d+)$/.exec(c);
     return m ? [+m[1], +m[2]] : CANVAS.portrait;
   })();
-  setVar(root, "--w", cw + "px");
-  setVar(root, "--h", ch + "px");
+  setVar(root, "--mi-w", cw + "px");
+  setVar(root, "--mi-h", ch + "px");
 
   const state = {
     duration: 10,
@@ -102,7 +103,22 @@
       c.members.push({ el, idx: +idx });
     });
     for (const c of cycles.values()) {
-      c.n = num(c.el.dataset.count, Math.max(1, ...c.members.map((m) => m.idx + 1)));
+      const total = Math.max(1, ...c.members.map((m) => m.idx + 1));
+      let order = null;
+      if (c.el.dataset.order) order = c.el.dataset.order.split(",").map((v) => +v.trim() - 1).filter((v) => v >= 0);
+      else if (c.el.hasAttribute("data-shuffle")) {
+        const r = rng(hash(c.el.dataset.shuffle || c.id));
+        order = [...Array(total).keys()];
+        for (let i = order.length - 1; i > 0; i--) {
+          const j = Math.floor(r() * (i + 1));
+          [order[i], order[j]] = [order[j], order[i]];
+        }
+      }
+      if (order && order.length) {
+        c.order = order;
+        for (const m of c.members) m.idx = order.indexOf(m.idx);
+        c.n = order.length;
+      } else c.n = num(c.el.dataset.count, total);
       c.period = c.n * c.step;
     }
   }
@@ -162,8 +178,13 @@
         setVar(c.el, "--step-p", p);
         setVar(c.el, "--cycle-p", cycleP);
         for (const m of c.members) {
-          const { on, age } = envelope(c, m.idx, t);
           const el = m.el;
+          if (m.idx < 0) {
+            el.__m = { on: 0, age: 0, p: 0, done: 0, st: "queued", wrap: 1 };
+            setVar(el, "--on", 0);
+            continue;
+          }
+          const { on, age } = envelope(c, m.idx, t);
           const st = m.idx === cur ? "active" : m.idx < cur ? "done" : "queued";
           const a = st === "queued" ? 0 : Math.max(0, age);
           const done = st === "done" ? wrapFade : 0;
@@ -182,7 +203,7 @@
           }
         }
         document.querySelectorAll(`[data-counter="${c.id}"]`).forEach((el) => {
-          const txt = pad(cur + 1, num(el.dataset.pad, 2));
+          const txt = pad((c.order ? c.order[cur] : cur) + 1, num(el.dataset.pad, 2));
           if (el.textContent !== txt) el.textContent = txt;
         });
         if (c.accent && colors.length) {
@@ -471,6 +492,96 @@
         }
         line.setAttribute("points", d);
       });
+    });
+  }
+
+  function setupFollow() {
+    document.querySelectorAll("[data-follow]").forEach((el) => {
+      const c = cycles.get(el.dataset.follow);
+      if (!c) return;
+      const cmds = [];
+      c.members.forEach((m) => {
+        if (m.idx >= 0 && m.el.dataset.cmd && cmds[m.idx] === undefined) cmds[m.idx] = m.el.dataset.cmd;
+      });
+      const prefix = el.dataset.prefix || "";
+      el.textContent = "";
+      const span = document.createElement("span");
+      const caret = document.createElement("i");
+      caret.className = "mi-caret";
+      el.append(span, caret);
+      const dur = num(el.dataset.dur, c.step * 0.6);
+      updaters.push((t) => {
+        const { cur, p } = cycleAt(c, t);
+        const cmd = cmds[cur] || "";
+        const n = Math.round(cmd.length * clamp((p * c.step) / dur));
+        const txt = prefix + cmd.slice(0, n);
+        if (span.textContent !== txt) span.textContent = txt;
+        caret.style.opacity = n < cmd.length || Math.floor(t * 2.5) % 2 === 0 ? 1 : 0;
+      });
+    });
+  }
+
+  function setupGrep() {
+    document.querySelectorAll("[data-grep]").forEach((el) => {
+      const queries = el.dataset.grep.split("|").map((q) => q.trim()).filter(Boolean);
+      if (!queries.length) return;
+      const n = queries.length;
+      let step = num(el.dataset.step, 3);
+      if (state.loop) step = state.duration / (n * Math.max(1, Math.round(state.duration / (step * n))));
+      const typeDur = num(el.dataset.dur, Math.min(1, step * 0.35));
+      const rows = [...el.querySelectorAll("[data-grep-row]")].map((r) => ({ r, text: (r.dataset.grepRow || r.textContent).toLowerCase() }));
+      const qEls = el.querySelectorAll("[data-grep-query]");
+      const cEls = el.querySelectorAll("[data-grep-count]");
+      const hits = queries.map((q) => rows.map((x) => x.text.includes(q.toLowerCase())));
+      if (el.dataset.sfx) for (let k = 0; k * step < state.duration - state.outro; k++) cue(el.dataset.sfx, k * step + typeDur, num(el.dataset.gain, 0.8));
+      updaters.push((t) => {
+        const k = Math.floor(mod(t, n * step) / step);
+        const age = mod(t, step);
+        const q = queries[k];
+        const typed = q.slice(0, Math.round(q.length * clamp(age / typeDur)));
+        const show = ease.out(clamp((age - typeDur) / 0.3));
+        const fadeOut = age > step - 0.25 ? ease.sine((step - age) / 0.25) : 1;
+        qEls.forEach((e) => {
+          if (e.textContent !== typed) e.textContent = typed;
+        });
+        const count = hits[k].filter(Boolean).length;
+        cEls.forEach((e) => {
+          const txt = String(show > 0 ? count : 0);
+          if (e.textContent !== txt) e.textContent = txt;
+        });
+        rows.forEach((x, i) => {
+          const m = hits[k][i] ? show * fadeOut : 0;
+          setVar(x.r, "--match", m);
+          setVar(x.r, "--miss", hits[k][i] ? 0 : show * fadeOut);
+        });
+      });
+    });
+  }
+
+  function setupScramble() {
+    document.querySelectorAll("[data-scramble]").forEach((el, i) => {
+      const final = el.textContent;
+      const dur = num(el.dataset.scramble, 0.6);
+      const period = el.__m === undefined && !el.hasAttribute("data-item") ? snap(num(el.dataset.period, state.master ? state.master.period : 4)) : 0;
+      const seed = hash(el.dataset.seed || "sc" + i);
+      updaters.push((t) => {
+        let active;
+        if (el.hasAttribute("data-item")) active = el.__m && el.__m.st === "active" && el.__m.age < dur && t >= dur;
+        else if (el.dataset.at !== undefined) active = t >= +el.dataset.at && t < +el.dataset.at + dur;
+        else active = mod(t, period) > period - dur;
+        let txt = final;
+        if (active) {
+          const r = rng(seed + Math.floor(t * 20));
+          txt = final.replace(/[0-9]/g, () => String(Math.floor(r() * 10)));
+        }
+        if (el.textContent !== txt) el.textContent = txt;
+      });
+    });
+  }
+
+  function setupSelect() {
+    document.querySelectorAll("[data-select]").forEach((el) => {
+      updaters.push((t) => setVar(el, "--sel", ease.inOut(timed(el, t, num(el.dataset.select, 0.6)))));
     });
   }
 
@@ -987,6 +1098,10 @@
     setupStars();
     setupData();
     setupText();
+    setupFollow();
+    setupGrep();
+    setupScramble();
+    setupSelect();
     const custom = window.MotionSetup;
     if (typeof custom === "function") await custom(Motion);
     if (EXPORT) render(num(query.get("t"), state.poster));

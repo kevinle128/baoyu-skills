@@ -323,7 +323,7 @@ npx skills add JimLiu/baoyu-design
 
 #### baoyu-infographic-motion
 
-动态信息图生成器：用 HTML/CSS/JS 制作信息图动画，导出 MP4（含合成音效）、GIF 和 PNG 封面。20 种动态布局 × 41 种视觉风格（含 10 种吸睛社媒风格和 10 种硬朗高对比风格）。在无头 Chrome 中逐帧确定性渲染，视频可无缝循环，音效精确落在每个高亮步骤的帧上。需要 Chrome 和 ffmpeg。
+动态信息图生成器：用 HTML/CSS/JS 制作信息图动画，导出 MP4（含合成音效）、GIF 和 PNG 封面。25 种动态布局 × 46 种视觉风格（含 10 种吸睛社媒风格和 10 种硬朗高对比风格）。在无头 Chrome 中逐帧确定性渲染，视频可无缝循环，音效精确落在每个高亮步骤的帧上。需要 Chrome 和 ffmpeg。
 
 ```bash
 # 根据内容推荐 布局 × 风格 × 音效，然后制作并导出
@@ -339,9 +339,9 @@ npx skills add JimLiu/baoyu-design
 **选项**：
 | 选项 | 说明 |
 |------|------|
-| `--layout <name>` | 动态布局（20 种，如 `card-pipeline`、`orbit-panel`、`fan-in`、`live-dashboard`） |
-| `--style <name>` | 视觉风格（41 种，默认：`light-dashboard`） |
-| `--canvas <name>` | `portrait` 1080×1350（默认）、`square`、`story` 1080×1920、`landscape` |
+| `--layout <name>` | 动态布局（25 种，如 `card-pipeline`、`orbit-panel`、`fan-in`、`live-dashboard`） |
+| `--style <name>` | 视觉风格（46 种，默认：`light-dashboard`） |
+| `--canvas <name>` | `portrait` 1080×1350（默认）、`square`、`story` 1080×1920、`landscape`、`paper` 1200×1600 |
 | `--sfx <profile>` | `soft`（滴答 + 氛围垫音，默认）、`music`（每步一拍）、`none` |
 | `--format <list>` | `mp4,gif,png`（默认全部） |
 

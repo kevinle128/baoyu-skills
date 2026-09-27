@@ -31,6 +31,8 @@
   --code-bg: #19202b;
   --code-ink: #cfe3f5;
   --code-accent: #5fd4c1;
+  --mi-w: 1080px;
+  --mi-h: 1350px;
   --fit: 1;
 }
 
@@ -43,8 +45,8 @@ html.mi-preview .mi-page { zoom: var(--fit); }
 
 .mi-page {
   position: relative;
-  width: var(--w);
-  height: var(--h);
+  width: var(--mi-w);
+  height: var(--mi-h);
   overflow: hidden;
   background: var(--bg);
   color: var(--ink);
@@ -161,3 +163,8 @@ html.mi-preview .mi-page { zoom: var(--fit); }
 .mi-player { position: fixed; left: 50%; bottom: 10px; transform: translateX(-50%); display: flex; gap: 10px; align-items: center; padding: 8px 12px; background: rgba(20, 22, 26, 0.92); color: #eee; border-radius: 12px; font: 13px/1 ui-monospace, Menlo, monospace; z-index: 99; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4); }
 .mi-player button { background: #2c3038; color: #eee; border: 0; border-radius: 8px; padding: 7px 11px; cursor: pointer; font: inherit; }
 .mi-player input { width: min(46vw, 420px); }
+
+.mi-select { background: linear-gradient(var(--sel-color, color-mix(in oklab, var(--item, var(--accent)) 32%, transparent)), var(--sel-color, color-mix(in oklab, var(--item, var(--accent)) 32%, transparent))) 0 0 / calc(var(--sel, 1) * 100%) 100% no-repeat; }
+[data-grep-row] { opacity: calc(1 - 0.65 * var(--miss, 0)); background-color: color-mix(in oklab, var(--item, var(--accent)) calc(var(--match, 0) * 18%), transparent); }
+.mi-ants { --ants: color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 1) * 100%), transparent); background-image: linear-gradient(90deg, var(--ants) 50%, transparent 0), linear-gradient(90deg, var(--ants) 50%, transparent 0), linear-gradient(0deg, var(--ants) 50%, transparent 0), linear-gradient(0deg, var(--ants) 50%, transparent 0); background-size: 14px 2px, 14px 2px, 2px 14px, 2px 14px; background-position: 0 0, 0 100%, 0 0, 100% 0; background-repeat: repeat-x, repeat-x, repeat-y, repeat-y; animation: mi-ants 0.8s linear infinite; }
+@keyframes mi-ants { to { background-position: 14px 0, -14px 100%, 0 -14px, 100% 14px; } }

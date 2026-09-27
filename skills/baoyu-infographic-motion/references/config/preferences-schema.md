@@ -11,7 +11,7 @@ version: 1
 
 preferred_layout: null     # any layout in references/layouts/ or null
 preferred_style: null      # any style in assets/styles/ or null
-preferred_canvas: null     # portrait|square|story|landscape|WxH|null
+preferred_canvas: null     # portrait|square|story|landscape|paper|WxH|null
 language: null             # zh|en|ja|vi|...|null (null = detect from source)
 
 sfx: soft                  # soft|music|none

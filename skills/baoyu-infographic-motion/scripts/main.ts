@@ -8,12 +8,12 @@ import type { SfxProfile } from "./ffmpeg-args.ts";
 
 const SKILL_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const ASSETS = path.join(SKILL_DIR, "assets");
-const CANVASES = ["portrait", "square", "story", "landscape"];
+const CANVASES = ["portrait", "square", "story", "landscape", "paper"];
 const FORMATS = ["mp4", "gif", "png"] as const;
 const PROFILES = ["soft", "music", "none"];
 
 const USAGE = `Usage:
-  main.ts init <dir> [--style <name>] [--canvas portrait|square|story|landscape] [--force]
+  main.ts init <dir> [--style <name>] [--canvas portrait|square|story|landscape|paper] [--force]
   main.ts export <index.html> [--out <dir>] [--name infographic] [--format mp4,gif,png]
                  [--fps 30] [--duration <s>] [--cycles <n>] [--bpm <n>] [--sfx soft|music|none]
                  [--music <file>] [--music-volume 0.35] [--gif-fps 15] [--gif-width 540]

@@ -25,6 +25,8 @@ the accent colour.
 | `data-accent` | off | Page `--accent` follows the active item's `data-color` (smooth colour blend) |
 | `data-master` | first cycle | This cycle sets video length and the music beat |
 | `data-count` | from items | Force the number of steps |
+| `data-order="2,6,9,12"` | — | Scattered spotlight: step through these item numbers (1-based, by `data-index`/document order) instead of 1, 2, 3. Items not listed stay idle (`--on: 0`, never `--done`), so `.mi-row` / `.mi-seen` would dim them forever: style non-spotlight rows with your own classes. Counters show the item number |
+| `data-shuffle="seed"` | — | Same, with a seeded random order of all items |
 
 | On an item | Meaning |
 |------------|---------|
@@ -101,10 +103,20 @@ Beams and packets also work on a hand-drawn `<path d="…">`, `<line>`, `<polyli
 | `data-type` | Typewriter reveal with caret. With `data-item` types during its step, else with `data-at` / `data-dur` |
 | `data-log="0.6"` on `.mi-log` with `[data-line]` children | Terminal log: a new line scrolls in every 0.6 s and loops forever. `data-rows`, `data-sfx="type"` |
 
+## Search, commands and reading
+
+| Attribute | Behaviour |
+|-----------|-----------|
+| `data-follow="cycleId"` | Terminal line that retypes the active item's `data-cmd` each step, with a caret. `data-prefix="$ "`, `data-dur` |
+| `data-grep="auth|cache|agent"` on a container | Grep filter: types each query into `[data-grep-query]`, rows `[data-grep-row]` that contain it get `--match` (lit), others get `--miss` (dimmed, styled by `motion.css`); `[data-grep-count]` shows the match count. `data-step` (s per query, loop-snapped), `data-dur` (typing time), `data-sfx`. `data-grep-row="text"` overrides the text matched |
+| `data-select` on an inline span + class `.mi-select` | Text-selection sweep: `--sel` grows 0→1 like someone reading. With `data-item`: during its step; else `data-at` / `data-dur`. Value = sweep time (default 0.6 s) |
+| `data-scramble="0.6"` on a number | Digits flicker randomly for 0.6 s, then settle. With `data-item`: when its step starts; with `data-at`: at that time; else at the end of every master period (frame 0 stays clean) |
+
 ## Accents and endings
 
 | Attribute | Behaviour |
 |-----------|-----------|
+| `.mi-ants` class | Marching-ants dashed border (animated, loop-safe). Fades with `--on` when the element is an item |
 | `data-flash="3"` on an item | `--flash` blinks when the item activates (badges: ACCEPT / REJECTED) |
 | `data-enter="fade|up|down|left|right|scale|blur"` + `data-at` + `data-dur` | Writes `--in`. Use for an outro banner with `data-outro` on `<body>`; add `data-sfx="chime"` |
 
