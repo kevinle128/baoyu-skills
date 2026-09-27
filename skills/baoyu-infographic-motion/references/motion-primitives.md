@@ -32,7 +32,7 @@ the accent colour.
 |------------|---------|
 | `data-item` | Member of the nearest ancestor cycle |
 | `data-item="id"` | Member of cycle `id` (can be anywhere on the page) |
-| `data-index="n"` | Step number. Elements with the same index light up together (card + beam + panel) |
+| `data-index="n"` | Step number, counting from 0. Elements with the same index light up together (card + beam + panel) |
 | `data-color` | Colour used by `data-accent` |
 | `data-sfx` | Overrides the cycle cue for this step |
 

@@ -933,6 +933,7 @@
     ui.className = "mi-player";
     ui.innerHTML = `<button data-act="play">▶</button><button data-act="sound">♪ off</button><input type="range" min="0" max="1000" value="0"><span class="mi-time">0.00s</span>`;
     body.appendChild(ui);
+    if (query.has("nobar")) ui.style.display = "none";
     const range = ui.querySelector("input");
     const timeEl = ui.querySelector(".mi-time");
     const playBtn = ui.querySelector('[data-act="play"]');
@@ -966,7 +967,7 @@
     };
     const frame = (now) => {
       if (!playing) return;
-      let t = base + (now - start) / 1000;
+      let t = base + Math.max(0, now - start) / 1000;
       if (t >= state.duration) {
         if (state.loop) t = mod(t, state.duration);
         else {
@@ -975,8 +976,12 @@
           playBtn.textContent = "▶";
         }
       }
-      show(t);
       if (playing) requestAnimationFrame(frame);
+      try {
+        show(t);
+      } catch (err) {
+        console.error(err);
+      }
     };
     const play = () => {
       playing = true;
@@ -1015,7 +1020,7 @@
       }
     });
     show(num(query.get("t"), state.poster));
-    if (query.has("autoplay")) play();
+    if (!query.has("paused")) play();
     player = { play, pause, show };
     return stage;
   }

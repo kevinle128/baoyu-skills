@@ -52,6 +52,8 @@ Every animated infographic is one folder with four files. `main.ts init` creates
 | `data-poster` | `0` | Time (s) of the poster / thumbnail frame |
 
 URL query overrides any of them for a quick test: `index.html?cycles=1&t=2.4`.
+The preview plays automatically when opened; add `?paused` to start stopped (at `?t=` or the poster time) and
+`?nobar` to hide the player bar (e.g. when embedding the page in an iframe).
 
 ## Page chrome (use on every page)
 
