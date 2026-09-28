@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&family=Chakra+Petch:wght@500;600;700&family=Azeret+Mono:wght@400;500;700&display=block");
+
+:root {
+  --bg: #06080e;
+  --bg2: #0a0e1a;
+  --panel: #0c1120;
+  --panel2: #121a2e;
+  --ink: #eef3ff;
+  --muted: #8e9cc0;
+  --line: #223053;
+  --grid: rgba(47, 140, 255, 0.04);
+  --c1: #2f8cff;
+  --c2: #ffe600;
+  --c3: #00e0ff;
+  --c4: #ff3b5c;
+  --c5: #a67bff;
+  --c6: #ff8a1f;
+  --accent: var(--c1);
+  --radius: 2px;
+  --bw: 1px;
+  --shadow: 0 16px 30px -20px rgba(0, 0, 0, 0.9);
+  --glow: 0.8;
+  --font-display: "Russo One", "Arial Black", sans-serif;
+  --font-body: "Chakra Petch", "Arial Narrow", sans-serif;
+  --font-mono: "Azeret Mono", Menlo, monospace;
+  --title-size: 56px;
+  --title-weight: 400;
+  --title-case: uppercase;
+  --title-track: 0.01em;
+  --label-case: uppercase;
+  --code-bg: #05070d;
+  --code-ink: #dbe6ff;
+  --code-accent: #ffe600;
+  --hex: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='34.641'%3E%3Cpath d='M0 17.3205 L10.0 0 H30.0 L40 17.3205 L30.0 34.641 H10.0 Z M40 17.3205 H60' fill='none' stroke='%232f8cff' stroke-width='1'/%3E%3C/svg%3E");
+}
+
+.mi-page::before, .mi-page::after { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.mi-page::before {
+  background:
+    radial-gradient(60% 40% at 100% 0%, rgba(47, 140, 255, 0.22), transparent 70%),
+    radial-gradient(50% 35% at 0% 100%, rgba(255, 230, 0, 0.10), transparent 70%),
+    var(--hex) 0 0 / 60px 34.641px repeat;
+  opacity: 0.55;
+  -webkit-mask: linear-gradient(160deg, #000 0%, rgba(0, 0, 0, 0.25) 35%, rgba(0, 0, 0, 0.1) 60%, #000 100%);
+  mask: linear-gradient(160deg, #000 0%, rgba(0, 0, 0, 0.25) 35%, rgba(0, 0, 0, 0.1) 60%, #000 100%);
+  animation: ea-hex 6s linear infinite;
+}
+@keyframes ea-hex { from { background-position: 0 0, 0 0, 0 0; } to { background-position: 0 0, 0 0, 0 -34.641px; } }
+.mi-page::after {
+  background: linear-gradient(105deg, transparent 42%, rgba(47, 140, 255, 0.10) 46%, rgba(170, 215, 255, 0.28) 49.4%, rgba(255, 255, 255, 0.42) 50%, rgba(255, 230, 0, 0.16) 51.2%, transparent 56%) 0 0 / 300% 100% no-repeat;
+  mix-blend-mode: screen;
+  animation: ea-sweep 4s linear infinite;
+}
+@keyframes ea-sweep { from { background-position: 110% 0; } to { background-position: -10% 0; } }
+
+.mi-crumb { color: #06080e; background: var(--c2); padding: 1px 12px; font-weight: 700; clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); }
+.mi-meta { color: var(--c3); }
+.mi-title { font-style: italic; color: #ffffff; line-height: 1.04; }
+.mi-title em { color: var(--accent); text-shadow: 0 0 22px color-mix(in oklab, var(--accent) 60%, transparent); }
+.mi-sub { color: var(--c3); font-family: var(--font-body); font-weight: 700; font-style: italic; letter-spacing: 0.1em; }
+.mi-sub .sep { color: var(--c2); }
+.mi-rule { height: 2px; background: linear-gradient(90deg, #223053, #223053 70%, transparent); }
+.mi-rule::after { height: 4px; top: -1px; clip-path: polygon(0 0, 100% 0, calc(100% - 4px) 100%, 0 100%); box-shadow: 0 0 16px var(--accent); }
+.mi-card, [data-item].mi-card {
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
+  background:
+    linear-gradient(110deg, var(--item, var(--accent)) 0 64px, transparent 64px) 0 0 / 100% 4px no-repeat,
+    linear-gradient(315deg, color-mix(in oklab, var(--item, var(--accent)) 70%, transparent) 0 13.6px, transparent 13.6px) 100% 100% / 30px 30px no-repeat,
+    linear-gradient(160deg, color-mix(in oklab, var(--item, var(--accent)) 8%, var(--panel)), var(--panel) 45%);
+}
+[data-item].mi-card, .mi-card[data-item] {
+  box-shadow: inset 0 0 calc(var(--on, 0) * 34px) color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 45%), transparent);
+}
+.mi-card h3, .mi-h { font-style: italic; font-weight: 400; letter-spacing: 0.01em; }
+.mi-label { font-family: var(--font-body); font-weight: 600; font-size: 13px; letter-spacing: 0.1em; }
+.mi-stat {
+  clip-path: polygon(0 0, 100% 0, calc(100% - 18px) 100%, 0 100%);
+  background: linear-gradient(110deg, color-mix(in oklab, var(--item, var(--accent)) 18%, #0c1120), #0c1120 60%);
+  border: 0; border-left: 5px solid var(--item, var(--accent));
+}
+.mi-stat-v { font-style: italic; font-size: 46px; text-shadow: 0 0 18px color-mix(in oklab, var(--item, var(--accent)) 45%, transparent); }
+.mi-stat-l { font-family: var(--font-body); font-weight: 600; }
+.mi-row { border-radius: 0; }
+.mi-code { border: 1px solid #1c2846; border-left: 3px solid var(--c2); border-radius: 0; }
+.mi-code-line b { color: #55627f; opacity: 1; }
+.mi-chip, .mi-badge { border-radius: 0; font-weight: 700; clip-path: polygon(6px 0, 100% 0, calc(100% - 6px) 100%, 0 100%); }
+.mi-bar { background: #18223a; border-radius: 0; }
+.mi-bar > i { border-radius: 0; box-shadow: 0 0 10px var(--item, var(--accent)); }
+.mi-edge { stroke: #26365c; }
+.mi-beam { filter: drop-shadow(0 0 6px var(--item, var(--accent))); }
+.mi-hub { border-radius: 50%; }
+.mi-foot .mark { font-family: var(--font-display); font-style: italic; color: #06080e; background: var(--c2); padding: 1px 14px; clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%); text-transform: uppercase; }

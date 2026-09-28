@@ -1,0 +1,72 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@500;700&family=Space+Mono:wght@400;700&display=block");
+
+:root {
+  --bg: #0a0a0a;
+  --bg2: #151515;
+  --panel: #131313;
+  --panel2: #1d1d1d;
+  --ink: #f4f4ef;
+  --muted: #a3a39a;
+  --line: #333330;
+  --grid: rgba(198, 255, 0, 0.05);
+  --c1: #c6ff00;
+  --c2: #ff2e88;
+  --c3: #ff7a1a;
+  --c4: #00e5ff;
+  --c5: #b65cff;
+  --c6: #fff200;
+  --accent: var(--c1);
+  --radius: 4px;
+  --bw: 2px;
+  --shadow: 6px 6px 0 rgba(198, 255, 0, 0.08);
+  --glow: 0.8;
+  --font-display: "Archivo Black", "Arial Black", sans-serif;
+  --font-body: "Space Grotesk", "Helvetica Neue", sans-serif;
+  --font-mono: "Space Mono", Menlo, monospace;
+  --title-size: 56px;
+  --title-weight: 400;
+  --title-case: uppercase;
+  --title-track: -0.02em;
+  --label-case: uppercase;
+  --code-bg: #000000;
+  --code-ink: #e9ffd0;
+  --code-accent: #c6ff00;
+  --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.09 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.mi-page::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(-45deg, rgba(198, 255, 0, 0.9) 0 16px, transparent 16px 36px) 0 0 / 50.91px 50.91px;
+  -webkit-mask: linear-gradient(225deg, #000 0 11%, transparent 11% 89%, #000 89%);
+  mask: linear-gradient(225deg, #000 0 11%, transparent 11% 89%, #000 89%);
+  opacity: 0.22;
+  animation: al-stripe 1s linear infinite;
+}
+.mi-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    var(--noise) 0 0 / 200px 200px,
+    radial-gradient(circle 460px at 100% 0%, rgba(198, 255, 0, 0.2), transparent 70%),
+    radial-gradient(circle 420px at 0% 100%, rgba(255, 46, 136, 0.2), transparent 70%);
+  opacity: 0.9;
+  animation: al-grain 0.5s steps(4) infinite;
+}
+@keyframes al-stripe { from { background-position: 0 0; } to { background-position: 50.91px 0; } }
+@keyframes al-grain { from { background-position: 0 0, 0 0, 0 0; } to { background-position: 200px 120px, 0 0, 0 0; } }
+
+.mi-title em { color: #0a0a0a; background: var(--accent); padding: 0 0.12em; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+.mi-title { text-shadow: 4px 4px 0 rgba(255, 46, 136, 0.55); }
+.mi-title em { text-shadow: none; }
+.mi-card h3, .mi-h { letter-spacing: -0.01em; }
+.mi-stat { border-top: 6px solid var(--item, var(--accent)); }
+.mi-stat-v { font-size: 50px; }
+.mi-foot .mark { color: #0a0a0a; background: var(--c1); padding: 2px 8px; }
+.mi-beam { stroke-width: 4; }

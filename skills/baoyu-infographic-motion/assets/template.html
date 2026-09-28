@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Motion Infographic</title>
+<link rel="stylesheet" href="motion.css">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* page-specific layout rules */
+</style>
+</head>
+<body data-canvas="{{CANVAS}}" data-cycles="2" data-sfx="soft" data-fps="30">
+<main class="mi-page mi-grid-bg">
+  <header class="mi-head">
+    <div class="mi-top"><span class="mi-crumb">SOURCE / SECTION / TOPIC</span><span class="mi-meta">STEP <span data-counter="main">01</span> / <span data-clock></span></span></div>
+    <h1 class="mi-title">Headline with <em>accent</em></h1>
+    <div class="mi-sub"><span>POINT A</span><span class="sep">&gt;</span><span>POINT B</span><span class="sep">&gt;</span><span>POINT C</span></div>
+    <div class="mi-rule" data-progress="main"></div>
+  </header>
+
+  <section class="mi-body" data-cycle="main" data-step="1.5" data-sfx="blip" data-accent>
+    <!-- layout goes here: copy a skeleton from references/layouts/<layout>.md -->
+  </section>
+
+  <footer class="mi-foot"><span>SOURCE / REFERENCE</span><span class="path">A &gt; B &gt; C</span><span class="mark">{{STYLE}}</span></footer>
+</main>
+<script src="motion.js"></script>
+</body>
+</html>

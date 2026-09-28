@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Share+Tech+Mono&display=block");
+
+:root {
+  --bg: #08060f;
+  --bg2: #120b24;
+  --panel: #110c22;
+  --panel2: #1a1233;
+  --ink: #f1ecff;
+  --muted: #9d95c4;
+  --line: #3a2d6b;
+  --grid: rgba(0, 240, 255, 0.07);
+  --c1: #ff2bd6;
+  --c2: #00f0ff;
+  --c3: #fff03a;
+  --c4: #7cff4f;
+  --c5: #ff6a3d;
+  --c6: #9d7bff;
+  --accent: var(--c1);
+  --radius: 4px;
+  --bw: 1.5px;
+  --shadow: 0 0 0 1px rgba(0, 0, 0, 0.6), 0 16px 40px -20px rgba(255, 43, 214, 0.35);
+  --glow: 1.2;
+  --font-display: "Rajdhani", "Arial Narrow", sans-serif;
+  --font-body: "Share Tech Mono", Menlo, monospace;
+  --font-mono: "Share Tech Mono", Menlo, monospace;
+  --title-size: 64px;
+  --title-weight: 700;
+  --title-case: uppercase;
+  --title-track: 0.02em;
+  --label-case: uppercase;
+  --code-bg: #05030c;
+  --code-ink: #c8f9ff;
+  --code-accent: #00f0ff;
+}
+
+.mi-page {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 900px 520px at 85% 0%, rgba(255, 43, 214, 0.2), transparent 70%),
+    radial-gradient(ellipse 800px 600px at 0% 100%, rgba(0, 240, 255, 0.14), transparent 70%);
+}
+.mi-grid-bg {
+  background-image:
+    radial-gradient(ellipse 900px 520px at 85% 0%, rgba(255, 43, 214, 0.2), transparent 70%),
+    radial-gradient(ellipse 800px 600px at 0% 100%, rgba(0, 240, 255, 0.14), transparent 70%),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: auto, auto, 40px 40px, 40px 40px;
+}
+.mi-page::before {
+  content: "";
+  position: absolute; left: -50%; right: -50%; bottom: 0; height: 42%; z-index: 0; pointer-events: none;
+  background:
+    linear-gradient(rgba(255, 43, 214, 0.32) 2px, transparent 2px) 0 0 / 100% 60px,
+    linear-gradient(90deg, rgba(255, 43, 214, 0.32) 2px, transparent 2px) 0 0 / 80px 100%;
+  transform: perspective(420px) rotateX(62deg);
+  transform-origin: 50% 100%;
+  -webkit-mask: linear-gradient(transparent, #000 70%);
+  mask: linear-gradient(transparent, #000 70%);
+  animation: mi-neon-floor 3s linear infinite;
+}
+.mi-page::after {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    linear-gradient(transparent 0 48%, rgba(0, 240, 255, 0.09) 50%, transparent 52% 100%) 0 0 / 100% 200%,
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.22) 0 1px, transparent 1px 3px);
+  animation: mi-neon-scan 6s linear infinite;
+}
+@keyframes mi-neon-floor { to { background-position: 0 60px, 0 0; } }
+@keyframes mi-neon-scan { from { background-position: 0 100%, 0 0; } to { background-position: 0 -100%, 0 0; } }
+@keyframes mi-neon-flicker { 0%, 18%, 22%, 60%, 64%, 100% { opacity: 1; } 20%, 62% { opacity: 0.55; } }
+.mi-card, .mi-stat {
+  background-color: color-mix(in oklab, var(--panel) 82%, transparent);
+  border-color: color-mix(in oklab, var(--c6) 45%, var(--line));
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+  background-image:
+    linear-gradient(225deg, transparent 11.8px, color-mix(in oklab, var(--c6) 45%, var(--line)) 11.8px 13.6px, transparent 13.6px),
+    linear-gradient(45deg, transparent 11.8px, color-mix(in oklab, var(--c6) 45%, var(--line)) 11.8px 13.6px, transparent 13.6px);
+}
+[data-item].mi-card, .mi-card[data-item] { clip-path: none; background-image: none; }
+.mi-title { text-shadow: 0 0 1px #fff, 0 0 14px rgba(241, 236, 255, 0.25); }
+.mi-title em {
+  color: #fff;
+  text-shadow: 0 0 2px #fff, 0 0 10px var(--accent), 0 0 24px var(--accent), 0 0 48px var(--accent);
+  animation: mi-neon-flicker 4s linear infinite;
+}
+.mi-crumb, .mi-sub { text-shadow: 0 0 8px color-mix(in oklab, var(--accent) 70%, transparent); }
+.mi-card h3, .mi-h { letter-spacing: 0.02em; font-size: 32px; }
+.mi-rule { height: 1px; background: color-mix(in oklab, var(--c2) 40%, transparent); }
+.mi-rule::after { top: -1px; height: 3px; box-shadow: 0 0 12px var(--accent), 0 0 4px var(--accent); }
+.mi-row { background: rgba(26, 18, 51, 0.8); border-color: #2e2356; }
+.mi-code { border: 1px solid color-mix(in oklab, var(--c2) 35%, transparent); box-shadow: inset 0 0 24px rgba(0, 240, 255, 0.08); }
+.mi-code .k { text-shadow: 0 0 8px var(--code-accent); }
+.mi-bar { background: #1f1740; }
+.mi-bar > i { box-shadow: 0 0 10px var(--item, var(--accent)); }
+.mi-stat-v { text-shadow: 0 0 12px color-mix(in oklab, var(--item, var(--accent)) 70%, transparent); }
+.mi-edge { stroke: #3a2d6b; stroke-width: 1.5; }
+.mi-beam { stroke-width: 2.5; filter: drop-shadow(0 0 5px var(--item, var(--accent))) drop-shadow(0 0 12px var(--item, var(--accent))); }
+.mi-beam-dot { fill: #fff; filter: drop-shadow(0 0 6px var(--item, var(--accent))) drop-shadow(0 0 14px var(--item, var(--accent))); }
+.mi-packet { fill: #fff; filter: drop-shadow(0 0 6px var(--accent)); }
+.mi-chip, .mi-badge { border-radius: 2px; text-shadow: 0 0 6px currentColor; box-shadow: 0 0 8px color-mix(in oklab, currentColor 40%, transparent); }
+.mi-hub { background: color-mix(in oklab, var(--accent) 14%, var(--panel)); }
+.mi-foot .mark { font-family: var(--font-display); color: var(--c2); text-shadow: 0 0 10px var(--c2); letter-spacing: 0.1em; text-transform: uppercase; }

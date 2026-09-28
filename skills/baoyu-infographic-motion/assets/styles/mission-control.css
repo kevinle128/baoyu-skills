@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=block");
+
+:root {
+  --bg: #04070d;
+  --bg2: #081020;
+  --panel: #0a1222;
+  --panel2: #0f1a2e;
+  --ink: #eef3fa;
+  --muted: #8b9cb5;
+  --line: #1f2d46;
+  --grid: rgba(120, 160, 220, 0.05);
+  --c1: #ff7a1a;
+  --c2: #3cd6ff;
+  --c3: #f4f7fb;
+  --c4: #ffcc33;
+  --c5: #ff5468;
+  --c6: #5be38b;
+  --accent: var(--c1);
+  --radius: 6px;
+  --bw: 1px;
+  --shadow: 0 20px 40px -26px rgba(0, 0, 0, 0.95);
+  --glow: 0.65;
+  --font-display: "Rajdhani", "Arial Narrow", sans-serif;
+  --font-body: "Space Grotesk", "Helvetica Neue", sans-serif;
+  --font-mono: "Space Mono", Menlo, monospace;
+  --title-size: 64px;
+  --title-weight: 700;
+  --title-case: uppercase;
+  --title-track: 0.015em;
+  --label-case: uppercase;
+  --code-bg: #050a14;
+  --code-ink: #d6e4f5;
+  --code-accent: #3cd6ff;
+}
+
+.mi-page.mi-grid-bg { background-image: none; }
+.mi-page::before, .mi-page::after { content: ""; position: absolute; z-index: 0; pointer-events: none; }
+.mi-page::before {
+  inset: 0;
+  background:
+    radial-gradient(circle at -25% 62%, transparent 1098px, rgba(255, 122, 26, 0.45) 1099px 1100px, transparent 1101px),
+    radial-gradient(ellipse 175% 80% at -25% 62%, transparent 79.8%, rgba(60, 214, 255, 0.34) 80%, transparent 80.25%),
+    radial-gradient(ellipse 150% 110% at -25% 62%, transparent 89.8%, rgba(60, 214, 255, 0.24) 90%, transparent 90.2%),
+    radial-gradient(ellipse 110% 50% at -25% 62%, transparent 94.6%, rgba(244, 247, 251, 0.2) 95%, transparent 95.4%),
+    radial-gradient(circle, rgba(139, 156, 181, 0.3) 0 1.2px, transparent 1.7px) 0 0,
+    repeating-linear-gradient(90deg, rgba(60, 214, 255, 0.45) 0 1px, transparent 1px 18px) 0 calc(100% - 18px) / 100% 6px no-repeat,
+    repeating-linear-gradient(90deg, rgba(60, 214, 255, 0.7) 0 2px, transparent 2px 90px) 0 calc(100% - 18px) / 100% 12px no-repeat,
+    radial-gradient(70% 50% at 85% 0%, rgba(60, 120, 255, 0.12), transparent 70%),
+    linear-gradient(180deg, #060b16, #04070d 60%);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 45px 45px, 100% 6px, 100% 12px, 100% 100%, 100% 100%;
+}
+.mi-page::after {
+  width: 2200px;
+  height: 2200px;
+  left: calc(-25% - 1100px);
+  top: calc(62% - 1100px);
+  border-radius: 50%;
+  background: conic-gradient(from 0deg,
+    transparent 0 150deg, rgba(255, 122, 26, 0.95) 179.5deg, #fff 179.8deg, transparent 180deg,
+    transparent 330deg, rgba(60, 214, 255, 0.9) 359.5deg, #fff 359.8deg, transparent 360deg);
+  -webkit-mask: radial-gradient(circle closest-side, transparent calc(100% - 4px), #000 calc(100% - 3px) calc(100% - 1px), transparent 100%);
+  mask: radial-gradient(circle closest-side, transparent calc(100% - 4px), #000 calc(100% - 3px) calc(100% - 1px), transparent 100%);
+  animation: mc-orbit 16s linear infinite;
+}
+@keyframes mc-orbit { from { rotate: 0deg; } to { rotate: 360deg; } }
+
+.mi-title { color: #f7f9fc; }
+.mi-title em { color: var(--c1); }
+.mi-crumb { color: var(--c2); }
+.mi-sub { color: var(--c1); }
+.mi-sub .sep { color: var(--c2); }
+.mi-rule { height: 1px; background: repeating-linear-gradient(90deg, #2a3a58 0 1px, transparent 1px 10px); }
+.mi-rule::after { height: 3px; top: -1px; box-shadow: 0 0 12px var(--accent); }
+.mi-page .mi-card, .mi-page .mi-stat {
+  background-image:
+    linear-gradient(90deg, var(--item, var(--accent)), color-mix(in oklab, var(--item, var(--accent)) 30%, transparent) 30%, transparent 70%),
+    linear-gradient(180deg, rgba(60, 214, 255, 0.05), transparent 40%);
+  background-size: 100% 2px, 100% 100%;
+  background-position: 0 0, 0 0;
+  background-repeat: no-repeat;
+}
+.mi-card h3, .mi-h { font-weight: 700; letter-spacing: 0.02em; }
+.mi-stat-v { font-weight: 700; }
+.mi-row { border-radius: 3px; }
+.mi-code { border: 1px solid #1a2740; }
+.mi-code-line b { color: #5d6f8c; opacity: 1; }
+.mi-edge { stroke: #25365a; stroke-dasharray: 2 5; stroke-linecap: round; }
+.mi-beam { filter: drop-shadow(0 0 6px var(--item, var(--accent))); }
+.mi-bar { background: #16223a; }
+.mi-chip, .mi-badge { border-radius: 3px; }
+.mi-hub { box-shadow: 0 0 0 8px color-mix(in oklab, var(--accent) 10%, transparent), 0 0 calc((18px + var(--pulse, 0.5) * 40px) * var(--glow)) color-mix(in oklab, var(--accent) 55%, transparent); }
+.mi-foot .mark { font-family: "Rajdhani", sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }

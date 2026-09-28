@@ -1,0 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=block");
+
+:root {
+  --bg: #f6f7fb;
+  --bg2: #eef0f8;
+  --panel: rgba(255, 255, 255, 0.8);
+  --panel2: rgba(246, 248, 252, 0.9);
+  --ink: #0a2540;
+  --muted: #56657d;
+  --line: rgba(10, 37, 64, 0.12);
+  --grid: rgba(10, 37, 64, 0.03);
+  --c1: #635bff;
+  --c2: #0a8fb0;
+  --c3: #e3346f;
+  --c4: #d9530a;
+  --c5: #0c9466;
+  --c6: #9a4fe0;
+  --accent: var(--c1);
+  --radius: 18px;
+  --bw: 1px;
+  --shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9), 0 2px 4px rgba(10, 37, 64, 0.04), 0 24px 48px -24px rgba(50, 50, 93, 0.35);
+  --glow: 0.55;
+  --font-display: "Inter Tight", "Helvetica Neue", sans-serif;
+  --font-body: "Inter", "Helvetica Neue", sans-serif;
+  --font-mono: "JetBrains Mono", Menlo, monospace;
+  --title-size: 62px;
+  --title-weight: 800;
+  --title-case: none;
+  --title-track: -0.035em;
+  --label-case: uppercase;
+  --code-bg: #0a2540;
+  --code-ink: #dbe6ff;
+  --code-accent: #80e9ff;
+}
+
+.mi-page::before {
+  content: "";
+  position: absolute;
+  inset: -25%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 30% 30% at 20% 22%, #a960ee, transparent 70%),
+    radial-gradient(ellipse 28% 28% at 78% 18%, #ff5b8a, transparent 70%),
+    radial-gradient(ellipse 30% 30% at 62% 46%, #ffcb57, transparent 70%),
+    radial-gradient(ellipse 32% 32% at 28% 70%, #90e0ff, transparent 70%),
+    radial-gradient(ellipse 30% 30% at 80% 78%, #635bff, transparent 70%);
+  filter: blur(40px) saturate(120%);
+  opacity: 1;
+  animation: mg-flow 12s ease-in-out infinite;
+}
+.mi-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.2) 100%);
+}
+@keyframes mg-flow {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(8deg) scale(1.08) translate(3%, -2%); }
+  50% { transform: rotate(-4deg) scale(1.12) translate(-3%, 3%); }
+  75% { transform: rotate(-9deg) scale(1.04) translate(2%, 2%); }
+}
+
+.mi-card, .mi-stat {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-color: rgba(255, 255, 255, 0.85);
+}
+.mi-title em { color: transparent; background: linear-gradient(90deg, var(--accent), #e3346f); -webkit-background-clip: text; background-clip: text; }
+.mi-crumb { font-weight: 500; }
+.mi-row { background: rgba(255, 255, 255, 0.65); }

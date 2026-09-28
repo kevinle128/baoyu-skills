@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@500;700;900&family=Overpass+Mono:wght@400;600&display=block");
+
+:root {
+  --bg: #f6f4ee;
+  --bg2: #ece9e0;
+  --panel: #ffffff;
+  --panel2: #f2f0ea;
+  --ink: #1b1d22;
+  --muted: #62666e;
+  --line: #d8d4ca;
+  --grid: rgba(27, 29, 34, 0.035);
+  --c1: #e1251b;
+  --c2: #0a6cc2;
+  --c3: #00925a;
+  --c4: #f3a712;
+  --c5: #8e3fa8;
+  --c6: #ee6c1f;
+  --accent: var(--c1);
+  --radius: 14px;
+  --bw: 2px;
+  --shadow: 0 2px 0 rgba(27, 29, 34, 0.06);
+  --glow: 0.35;
+  --font-display: "Overpass", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Overpass", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "Overpass Mono", Menlo, monospace;
+  --title-size: 62px;
+  --title-weight: 900;
+  --title-case: none;
+  --title-track: -0.02em;
+  --label-case: uppercase;
+  --code-bg: #1d2330;
+  --code-ink: #e8ecf3;
+  --code-accent: #ffc233;
+}
+
+.mi-page { background-color: var(--bg); }
+.mi-page::before {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    linear-gradient(var(--c1), var(--c1)) 0 18px / 100% 10px no-repeat,
+    linear-gradient(var(--c2), var(--c2)) calc(100% - 18px) 0 / 10px 100% no-repeat,
+    linear-gradient(var(--c3), var(--c3)) 0 calc(100% - 18px) / 100% 10px no-repeat,
+    linear-gradient(var(--c4), var(--c4)) 18px 0 / 10px 100% no-repeat,
+    linear-gradient(45deg, transparent calc(50% - 5px), color-mix(in oklab, var(--c5) 22%, transparent) calc(50% - 5px) calc(50% + 5px), transparent calc(50% + 5px)) 100% 100% / 560px 560px no-repeat;
+}
+.mi-page::after {
+  content: "";
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  --st: #fff 6px, #1b1d22 6.5px 10px, transparent 10.5px;
+  background:
+    radial-gradient(circle, var(--st)) 11px 11px / 24px 24px no-repeat,
+    radial-gradient(circle, var(--st)) calc(100% - 11px) 11px / 24px 24px no-repeat,
+    radial-gradient(circle, var(--st)) 11px calc(100% - 11px) / 24px 24px no-repeat,
+    radial-gradient(circle, var(--st)) calc(100% - 11px) calc(100% - 11px) / 24px 24px no-repeat,
+    radial-gradient(circle, #fff 3px, var(--c1) 3.5px 6px, transparent 6.5px) 50% 11px / 24px 24px no-repeat,
+    radial-gradient(circle, #fff 3px, var(--c2) 3.5px 6px, transparent 6.5px) calc(100% - 11px) 50% / 24px 24px no-repeat,
+    radial-gradient(circle, #fff 3px, var(--c3) 3.5px 6px, transparent 6.5px) 50% calc(100% - 11px) / 24px 24px no-repeat,
+    radial-gradient(circle, #fff 3px, var(--c4) 3.5px 6px, transparent 6.5px) 11px 50% / 24px 24px no-repeat;
+}
+.mi-card, .mi-stat { border-color: #e1ddd3; }
+.mi-card { border-top: 7px solid var(--item, var(--line)); }
+[data-item].mi-card, .mi-card[data-item] { border-top-color: color-mix(in oklab, var(--item, var(--accent)) calc(35% + var(--on, 0) * 65%), var(--line)); }
+.mi-card h3, .mi-h { font-weight: 900; letter-spacing: -0.015em; text-transform: none; }
+.mi-stat { border-left: 10px solid var(--item, var(--accent)); }
+.mi-rule { height: 8px; border-radius: 8px; }
+.mi-rule::after { height: 8px; top: 0; border-radius: 8px; }
+.mi-row { border-radius: 999px; padding-left: 18px; }
+.mi-row[data-item] { border-left-width: 1px; box-shadow: inset 8px 0 0 color-mix(in oklab, var(--item, var(--accent)) calc(40% + var(--on, 0) * 60%), var(--line)); }
+.mi-edge { stroke: #d9d5cb; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+.mi-beam { stroke-width: 8; stroke-linejoin: round; }
+.mi-beam-dot { fill: #fff; stroke: var(--item, var(--accent)); stroke-width: 4; filter: none; }
+.mi-packet { fill: #fff; stroke: var(--accent); stroke-width: 3; }
+.mi-bar { height: 12px; background: #e6e2d8; }
+.mi-chip, .mi-badge { border-width: 2px; font-weight: 600; }
+.mi-hub { border-width: 8px; background: #fff; }
+.mi-crumb::before { content: ""; display: inline-block; width: 16px; height: 16px; border-radius: 50%; border: 4px solid var(--accent); background: #fff; margin-right: 10px; vertical-align: -3px; }
+.mi-foot .mark { font-weight: 900; }

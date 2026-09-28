@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Chakra+Petch:wght@400;500;600&family=Share+Tech+Mono&display=block");
+
+:root {
+  --bg: #14002e;
+  --bg2: #2a0752;
+  --panel: rgba(26, 6, 56, 0.88);
+  --panel2: rgba(52, 16, 96, 0.9);
+  --ink: #fdeaff;
+  --muted: #b99be0;
+  --line: #4b2682;
+  --grid: rgba(255, 63, 180, 0.07);
+  --c1: #ff3fb4;
+  --c2: #22e4ff;
+  --c3: #ffb13b;
+  --c4: #a86bff;
+  --c5: #ff5e7a;
+  --c6: #fff05a;
+  --accent: var(--c1);
+  --radius: 10px;
+  --bw: 1.5px;
+  --shadow: 0 0 0 1px rgba(255, 63, 180, 0.12), 0 18px 40px -18px rgba(255, 63, 180, 0.55);
+  --glow: 1.1;
+  --font-display: "Orbitron", "Eurostile", sans-serif;
+  --font-body: "Chakra Petch", "Arial Narrow", sans-serif;
+  --font-mono: "Share Tech Mono", Menlo, monospace;
+  --title-size: 56px;
+  --title-weight: 900;
+  --title-case: uppercase;
+  --title-track: 0.02em;
+  --label-case: uppercase;
+  --code-bg: #0b0120;
+  --code-ink: #ffd9f6;
+  --code-accent: #22e4ff;
+}
+
+.mi-page { background: linear-gradient(180deg, #0c0024 0%, #24054a 46%, #4a0b5e 58%, #14002e 58.2%, #0a001c 100%); }
+.mi-page::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 42% 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(circle 360px at 50% 360px, #fff27a 0%, #ffb13b 34%, #ff3fb4 72%, #c4249c 99%, transparent 100%) 50% 100% / 720px 470px no-repeat;
+  -webkit-mask: linear-gradient(180deg, #000 calc(100% - 250px), transparent 0), repeating-linear-gradient(180deg, #000 0 24px, transparent 24px 34px) 0 0 / 100% 34px;
+  mask: linear-gradient(180deg, #000 calc(100% - 250px), transparent 0), repeating-linear-gradient(180deg, #000 0 24px, transparent 24px 34px) 0 0 / 100% 34px;
+  filter: drop-shadow(0 0 40px rgba(255, 63, 180, 0.6));
+  animation: sw-scan 3s linear infinite;
+}
+.mi-page::after {
+  content: "";
+  position: absolute;
+  left: -40%;
+  right: -40%;
+  top: 58%;
+  bottom: -30%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, #14002e 0%, transparent 30%),
+    linear-gradient(90deg, rgba(34, 228, 255, 0.55) 2px, transparent 2px) 50% 0 / 80px 80px,
+    linear-gradient(180deg, rgba(255, 63, 180, 0.6) 2px, transparent 2px) 0 0 / 80px 80px;
+  transform: perspective(420px) rotateX(62deg);
+  transform-origin: 50% 0;
+  animation: sw-floor 1.5s linear infinite;
+}
+@keyframes sw-scan { from { -webkit-mask-position: 0 0, 0 0; mask-position: 0 0, 0 0; } to { -webkit-mask-position: 0 0, 0 34px; mask-position: 0 0, 0 34px; } }
+@keyframes sw-floor { from { background-position: 0 0, 50% 0, 0 0; } to { background-position: 0 0, 50% 80px, 0 80px; } }
+
+.mi-grid-bg { background-image: linear-gradient(180deg, #0c0024 0%, #24054a 46%, #4a0b5e 58%, #14002e 58.2%, #0a001c 100%); background-size: auto; }
+.mi-title {
+  background: linear-gradient(180deg, #ffffff 0%, #d9f6ff 38%, #6fd3ff 49%, #2a0a5e 50%, #ff7ad0 64%, #ffe0f5 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 14px rgba(255, 63, 180, 0.55)) drop-shadow(0 3px 0 #3a0a6e);
+}
+.mi-title em { color: transparent; background: linear-gradient(180deg, #fff 0%, var(--accent) 55%, #fff 100%); -webkit-background-clip: text; background-clip: text; }
+.mi-card, .mi-stat { backdrop-filter: blur(6px); }
+.mi-stat-v { text-shadow: 0 0 18px color-mix(in oklab, var(--item, var(--accent)) 60%, transparent); }
+.mi-crumb, .mi-sub { text-shadow: 0 0 10px color-mix(in oklab, var(--accent) 70%, transparent); }
+.mi-beam { filter: drop-shadow(0 0 6px var(--item, var(--accent))); }
+.mi-edge { stroke: #5b2e96; }
+.mi-foot .mark { color: var(--c2); text-shadow: 0 0 10px var(--c2); }

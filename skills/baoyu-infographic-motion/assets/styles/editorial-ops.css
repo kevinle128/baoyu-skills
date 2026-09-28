@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=block");
+
+:root {
+  --bg: #e6ebf3;
+  --bg2: #dce3ee;
+  --panel: #ffffff;
+  --panel2: #f3f6fb;
+  --ink: #0b0f15;
+  --muted: #5b6577;
+  --line: #bcc7da;
+  --grid: transparent;
+  --c1: #2c4ec9;
+  --c2: #13899a;
+  --c3: #6f4be0;
+  --c4: #178a5e;
+  --c5: #d0433f;
+  --c6: #b0701a;
+  --accent: var(--c1);
+  --radius: 10px;
+  --bw: 1.5px;
+  --shadow: 4px 5px 0 rgba(44, 78, 201, 0.12), 0 16px 30px -20px rgba(44, 78, 201, 0.45);
+  --glow: 0;
+  --pad: 52px;
+  --gap: 20px;
+  --font-display: "Libre Caslon Text", "Times New Roman", Georgia, serif;
+  --font-body: "IBM Plex Mono", Menlo, monospace;
+  --font-mono: "IBM Plex Mono", Menlo, monospace;
+  --title-size: 54px;
+  --title-weight: 700;
+  --title-case: uppercase;
+  --title-track: 0;
+  --label-case: uppercase;
+  --code-bg: #0b0f15;
+  --code-ink: #dfe6f2;
+  --code-accent: #8ea6ff;
+  --sel-color: rgba(44, 78, 201, 0.22);
+}
+
+.mi-page, .mi-page.mi-grid-bg { background: linear-gradient(180deg, #eef2f6 0%, #dce3ee 100%); }
+.mi-page::before, .mi-page::after { content: ""; position: absolute; z-index: 0; pointer-events: none; }
+.mi-page::before {
+  inset: 0;
+  background: radial-gradient(40% 30% at 50% 46%, rgba(44, 78, 201, 0.12), transparent 70%);
+  animation: eo-glow 8s ease-in-out infinite;
+}
+@keyframes eo-glow { 0%, 100% { opacity: 0.55; } 50% { opacity: 1; } }
+
+.mi-crumb { color: var(--muted); letter-spacing: 0.22em; }
+.mi-meta { color: var(--ink); font-weight: 600; }
+.mi-meta::before {
+  content: "\25CF  LIVE";
+  display: inline-block;
+  margin-right: 12px;
+  padding: 1px 10px;
+  border: 1.5px solid var(--c4);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--ink);
+  font-weight: 600;
+  animation: eo-live 2s ease-out infinite;
+}
+@keyframes eo-live {
+  0% { box-shadow: 0 0 0 0 rgba(23, 138, 94, 0.45); }
+  70% { box-shadow: 0 0 0 7px rgba(23, 138, 94, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(23, 138, 94, 0); }
+}
+.mi-title { line-height: 1.04; }
+.mi-title em { color: var(--c1); }
+.mi-sub {
+  align-self: stretch;
+  padding: 8px 0;
+  color: #e9eef6;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 0.1em;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.14), transparent) -400px 0 / 240px 100% no-repeat,
+    repeating-linear-gradient(90deg, #4d6be0 0 12px, transparent 12px 24px) 0 100% / 100% 2px no-repeat,
+    #0b0f15;
+  box-shadow: calc(-1 * var(--pad)) 0 0 #0b0f15, var(--pad) 0 0 #0b0f15;
+  animation: eo-band 8s linear infinite;
+}
+@keyframes eo-band {
+  from { background-position: -400px 0, 0 100%, 0 0; }
+  to { background-position: 1400px 0, 240px 100%, 0 0; }
+}
+.mi-sub .sep { color: #6b7a90; }
+.mi-rule { height: 1px; background: var(--line); }
+.mi-rule::after { top: -1px; height: 3px; background: var(--c1); }
+
+.mi-label { color: var(--muted); letter-spacing: 0.14em; }
+.mi-label.acc { color: var(--c1); }
+.mi-card {
+  background: color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 6%), var(--panel));
+  outline: 1px solid rgba(44, 78, 201, 0.14);
+  outline-offset: -5px;
+}
+.mi-card, [data-item].mi-card { box-shadow: var(--shadow); }
+[data-item].mi-card { border-color: color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 100%), var(--line)); }
+.mi-card h3, .mi-h { font-size: 24px; letter-spacing: 0.01em; }
+.mi-stat { box-shadow: var(--shadow); }
+.mi-stat-v { font-family: var(--font-mono); font-weight: 600; letter-spacing: -0.02em; }
+.mi-stat-l { color: var(--muted); letter-spacing: 0.14em; }
+.mi-row { background: var(--panel2); border: 1px solid #d3dbe8; border-radius: 6px; }
+.mi-row[data-item] { border-left-width: 3px; }
+.mi-code { border: 1.5px solid var(--ink); box-shadow: var(--shadow); }
+.mi-code-line b { color: #6c7890; opacity: 1; }
+.mi-edge { stroke: #9aa8c2; stroke-width: 1.5; stroke-dasharray: 4 6; }
+.mi-beam { stroke-width: 2.5; }
+.mi-beam-dot { filter: none; stroke: #fff; stroke-width: 2; }
+.mi-bar { background: #e3e8f1; border: 1px solid #cbd4e3; height: 10px; }
+.mi-ring { background: conic-gradient(var(--item, var(--accent)) calc(var(--value, 0) * 360deg), #e3e8f1 0); }
+.mi-chip, .mi-badge {
+  border: 1.5px solid color-mix(in oklab, var(--item, var(--accent)) 70%, var(--ink));
+  background: var(--panel);
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+.mi-badge[data-flash] { background: color-mix(in oklab, var(--item, var(--accent)) calc(var(--flash, 0) * 100%), var(--panel)); color: color-mix(in oklab, #fff calc(var(--flash, 0) * 100%), var(--ink)); }
+.mi-hub { background: var(--ink); color: #f3f6fb; border: none; box-shadow: 0 0 0 8px rgba(44, 78, 201, 0.08), 0 0 0 18px rgba(44, 78, 201, 0.05); }
+[data-grep-row] { background-color: color-mix(in oklab, var(--c1) calc(var(--match, 0) * 12%), transparent); }
+.mi-ants { --ants: color-mix(in oklab, var(--c1) calc(var(--on, 1) * 100%), transparent); }
+.mi-caret { background: var(--c3); }
+
+.mi-foot { color: var(--muted); letter-spacing: 0.1em; }
+.mi-foot .path { color: var(--c1); font-weight: 600; }
+.mi-foot .mark { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 18px; color: var(--ink); }

@@ -1,0 +1,77 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@500;600;700&family=JetBrains+Mono:wght@400;600&display=block");
+
+:root {
+  --bg: #fbfaf7;
+  --bg2: #f0eee8;
+  --panel: #ffffff;
+  --panel2: #f5f4f0;
+  --ink: #141414;
+  --muted: #62605b;
+  --line: #d8d5cc;
+  --grid: transparent;
+  --c1: #141414;
+  --c2: #8a7000;
+  --c3: #3b3b3b;
+  --c4: #6b6b6b;
+  --c5: #b39200;
+  --c6: #9a9a9a;
+  --accent: var(--c1);
+  --radius: 4px;
+  --bw: 1px;
+  --shadow: 0 14px 30px -16px rgba(20, 20, 20, 0.35), 0 2px 6px -2px rgba(20, 20, 20, 0.12);
+  --glow: 0;
+  --pad: 56px;
+  --gap: 18px;
+  --font-display: "Libre Baskerville", Georgia, "Times New Roman", serif;
+  --font-body: "Libre Baskerville", Georgia, serif;
+  --font-mono: "JetBrains Mono", Menlo, monospace;
+  --title-size: 52px;
+  --title-weight: 700;
+  --title-case: uppercase;
+  --title-track: 0;
+  --label-case: uppercase;
+  --code-bg: #f5f4f0;
+  --code-ink: #141414;
+  --code-accent: #141414;
+  --hl: #f7e13a;
+  --sel-color: #f7e13a;
+}
+
+.mi-page, .mi-page.mi-grid-bg { background: var(--bg); }
+.mi-crumb, .mi-meta { font-family: var(--font-body); color: var(--muted); letter-spacing: 0; font-size: 14px; text-transform: none; }
+.mi-title { text-align: center; line-height: 1.1; }
+.mi-title em { font-style: normal; background: linear-gradient(var(--hl), var(--hl)) 0 88% / 100% 42% no-repeat; }
+.mi-sub { font-family: var(--font-body); color: var(--ink); letter-spacing: 0; text-transform: none; }
+.mi-sub mark, mark { background: var(--hl); color: var(--ink); padding: 0 3px; }
+.mi-rule { height: 1.5px; background: var(--ink); }
+.mi-rule::after { height: 4px; top: -1px; background: var(--hl); }
+
+.mi-label { font-family: "Inter", system-ui, sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.06em; color: var(--ink); }
+.mi-label.acc { background: var(--hl); padding: 0 6px; }
+.mi-card { background: var(--panel); border: 1px solid var(--ink); border-radius: var(--radius); }
+[data-item].mi-card {
+  translate: 0 calc(var(--on, 0) * -6px);
+  box-shadow: 0 calc(var(--on, 0) * 16px) calc(var(--on, 0) * 30px) calc(var(--on, 0) * -14px) rgba(20, 20, 20, 0.45);
+}
+.mi-card h3, .mi-h { font-family: var(--font-display); font-weight: 700; letter-spacing: 0; }
+.mi-card.dark, .mi-hub { background: var(--ink); color: #f4f2ec; border-color: var(--ink); }
+.mi-stat { background: var(--panel); border: 1px solid var(--ink); }
+.mi-stat-v { font-family: var(--font-mono); font-weight: 600; }
+.mi-stat-l { font-family: "Inter", system-ui, sans-serif; color: var(--muted); letter-spacing: 0.06em; font-size: 12px; }
+.mi-row { background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
+.mi-row[data-item] { background: color-mix(in oklab, var(--hl) calc(var(--on, 0) * 70%), transparent); }
+.mi-code { background: var(--code-bg); border: 1px solid var(--line); }
+.mi-edge { stroke: var(--ink); stroke-width: 1.2; }
+.mi-beam { stroke: var(--c5); stroke-width: 2; }
+.mi-beam-dot, .mi-packet { fill: var(--hl); stroke: var(--ink); stroke-width: 1.2; filter: none; }
+.mi-bar { background: var(--bg2); border: 1px solid var(--ink); height: 8px; border-radius: 0; }
+.mi-bar > i { background: var(--hl); border-radius: 0; }
+.mi-ring { background: conic-gradient(var(--c5) calc(var(--value, 0) * 360deg), var(--bg2) 0); }
+.mi-chip, .mi-badge { border: 1px solid var(--ink); background: var(--hl); color: var(--ink); font-family: var(--font-mono); font-weight: 600; border-radius: 3px; }
+.mi-badge[data-flash] { background: color-mix(in oklab, var(--hl) calc(40% + var(--flash, 0) * 60%), var(--panel)); }
+[data-grep-row] { background-color: color-mix(in oklab, var(--hl) calc(var(--match, 0) * 80%), transparent); }
+.mi-ants { --ants: color-mix(in oklab, var(--c5) calc(var(--on, 1) * 100%), transparent); }
+.mi-caret { background: var(--ink); }
+
+.mi-foot { font-family: var(--font-body); color: var(--muted); letter-spacing: 0; font-size: 13px; }
+.mi-foot .mark { font-style: italic; color: var(--ink); }

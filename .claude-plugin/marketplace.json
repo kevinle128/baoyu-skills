@@ -26,6 +26,7 @@
         "./skills/baoyu-format-markdown",
         "./skills/baoyu-image-gen",
         "./skills/baoyu-infographic",
+        "./skills/baoyu-infographic-motion",
         "./skills/baoyu-markdown-to-html",
         "./skills/baoyu-post-to-weibo",
         "./skills/baoyu-post-to-wechat",

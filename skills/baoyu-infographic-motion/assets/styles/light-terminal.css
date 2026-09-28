@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Doto:wght@700;900&family=Space+Mono:wght@400;700&family=IBM+Plex+Mono:wght@400;500;600&display=block");
+
+:root {
+  --bg: #f3f6f8;
+  --bg2: #eaeff3;
+  --panel: #fbfcfd;
+  --panel2: #eef3f7;
+  --ink: #1e2a38;
+  --muted: #5f6f82;
+  --line: #b1c3d8;
+  --grid: rgba(46, 123, 214, 0.06);
+  --c1: #2e7bd6;
+  --c2: #23915d;
+  --c3: #d0485f;
+  --c4: #1f3a8a;
+  --c5: #b07a1e;
+  --c6: #1f9a9a;
+  --accent: var(--c1);
+  --radius: 3px;
+  --bw: 1px;
+  --shadow: 0 1px 0 rgba(30, 42, 56, 0.04);
+  --glow: 0.35;
+  --font-display: "Space Mono", "IBM Plex Mono", monospace;
+  --font-body: "IBM Plex Mono", Menlo, monospace;
+  --font-mono: "IBM Plex Mono", Menlo, monospace;
+  --title-size: 50px;
+  --title-weight: 700;
+  --title-case: uppercase;
+  --title-track: -0.03em;
+  --label-case: uppercase;
+  --code-bg: #eef3f7;
+  --code-ink: #1e2a38;
+  --code-accent: #2e7bd6;
+}
+
+.mi-page.mi-grid-bg {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px),
+    linear-gradient(rgba(46, 123, 214, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46, 123, 214, 0.035) 1px, transparent 1px);
+  background-size: 60px 60px, 60px 60px, 12px 12px, 12px 12px;
+}
+.mi-page::before, .mi-page::after { content: ""; position: absolute; z-index: 0; pointer-events: none; }
+.mi-page::before {
+  inset: 0;
+  background: linear-gradient(90deg, var(--c4) 0 24%, var(--c1) 24% 58%, var(--c6) 58% 79%, var(--c2) 79% 91%, var(--c3) 91%) 0 0 / 100% 6px no-repeat;
+}
+.mi-page::after {
+  top: 20px; right: 54px; width: 10px; height: 10px;
+  border-radius: 50%;
+  background: var(--c2);
+  box-shadow: 0 0 0 4px rgba(35, 145, 93, 0.18);
+  animation: lt-live 1s steps(2) infinite;
+}
+@keyframes lt-live { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+.mi-title { color: var(--ink); }
+.mi-crumb { color: var(--c4); font-weight: 600; }
+.mi-sub { color: var(--accent); font-weight: 500; }
+.mi-rule { height: 1px; background: var(--line); }
+.mi-rule::after { height: 3px; top: -1px; }
+.mi-card { background: var(--panel); border-color: var(--line); }
+[data-item].mi-card { box-shadow: inset 0 3px 0 color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 100%), transparent), 0 8px 22px -14px color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 60%), transparent); }
+.mi-card h3 { font-size: 26px; letter-spacing: -0.03em; }
+.mi-stat { background: var(--panel); border-color: var(--line); box-shadow: inset 0 3px 0 var(--item, var(--accent)); }
+.mi-stat-v { font-family: "Doto", "Space Mono", monospace; font-weight: 900; font-size: 52px; letter-spacing: -0.02em; }
+.mi-row { background: #f5f8fb; border-color: #d3dfeb; border-radius: 2px; }
+.mi-code { border: 1px solid var(--line); border-radius: 3px; }
+.mi-code-line b { color: #8a9bb0; opacity: 1; }
+.mi-code-line { background: color-mix(in oklab, var(--code-accent) calc(var(--on, 0) * 16%), transparent); }
+.mi-edge { stroke: #b1c3d8; stroke-width: 1.5; }
+.mi-beam { stroke-width: 2.5; }
+.mi-bar { background: #dde6ef; border-radius: 0; height: 8px; }
+.mi-bar > i { border-radius: 0; }
+.mi-chip, .mi-badge { border-radius: 2px; font-weight: 600; background: color-mix(in oklab, var(--item, var(--accent)) 8%, var(--panel)); }
+.mi-hub { border-radius: 6px; border-width: 1.5px; background: var(--panel); }
+.mi-foot .mark { font-family: var(--font-display); letter-spacing: -0.02em; }
