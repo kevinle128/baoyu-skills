@@ -1,6 +1,6 @@
 ---
 name: baoyu-infographic-motion
-description: Generates animated infographics as HTML/CSS/JS and exports them to MP4 (with synthesized sound effects), GIF and a PNG poster. Offers 33 motion layouts and 49 visual styles, with a deterministic frame-by-frame renderer so videos loop seamlessly. Use when the user asks for an "animated infographic", "motion infographic", "infographic video", "GIF infographic", "动态信息图", "信息图视频", "infographic động", or wants an existing infographic to move.
+description: Generates animated infographics as HTML/CSS/JS and exports them to MP4 (with synthesized sound effects), GIF and a PNG poster. Offers 36 motion layouts and 49 visual styles, with a deterministic frame-by-frame renderer so videos loop seamlessly. Use when the user asks for an "animated infographic", "motion infographic", "infographic video", "GIF infographic", "动态信息图", "信息图视频", "infographic động", or wants an existing infographic to move.
 version: 1.0.0
 metadata:
   openclaw:
@@ -74,7 +74,7 @@ equivalent). If skipped, state the assumed choices before building.
 | `--lang` | Language of on-screen text |
 | `--no-confirm` | Skip Step 4 |
 
-## Layout Gallery (33)
+## Layout Gallery (36)
 
 | Layout | Shows | Motion |
 |--------|-------|--------|
@@ -111,6 +111,9 @@ equivalent). If skipped, state the assumed choices before building.
 | `evolution-rows` | One idea growing through 3-5 levels (script → workflow → agent → agent system) | Every row runs its own icon cycle; master focus steps down the rows; loop-back arrows carry a packet |
 | `sector-fan` | Ecosystem / stack map: 5-6 categories fanned from a hub, 3-4 items each (canvas `landscape`) | Wedge fills in turn, beam runs the right-angle trunk, items lift; packets flow on all trunks |
 | `pattern-grid` | 9-15 techniques as a cheat-sheet grid (algorithm patterns, data-structure ops) | Every tile loops its own mini animation (pointers, window, stack, tree, DP fill); spotlight + caption step through tiles |
+| `chart-figure` | Research figure: schematic + distribution charts + run charts with confidence bands (canvas `paper`) | Generation rail steps, distributions grow one generation at a time, run lines draw left to right with bands |
+| `context-window` | How one call's context is assembled: moves, budget, attention, compaction, cache, token sphere (canvas `1200x1500`) | Move chips step, budget bar re-splits, cache cells flicker, a particle sphere of tokens turns |
+| `cluster-radial` | 8-10 tools / projects in 4 role groups around one hub | Active node's dot swarm brightens hub-to-node, beam draws, active card swaps, list row tints |
 
 Full definition + tested HTML skeleton: `references/layouts/<layout>.md`.
 
@@ -193,6 +196,9 @@ Details (palette, fonts, pairings, sound, GIF notes): `references/styles/<style>
 | Levels of maturity / complexity | `evolution-rows` + `pastel-schematic` | soft |
 | Ecosystem / stack map | `sector-fan` + `pastel-schematic` (or `paper-doc`) | soft |
 | Algorithm / technique cheat sheet | `pattern-grid` + `midnight-grid` | soft |
+| Research result / experiment explainer | `chart-figure` + `white-paper` (or `highlighter-paper`) | soft |
+| Context / memory / RAG budget explainer | `context-window` + `cream-brutal` | soft |
+| Tool / project catalogue in 4 roles | `cluster-radial` + `paper-doc` (or `pastel-schematic`) | soft |
 | Business / consulting report | `funnel` or `comparison-matrix` + `consulting-report` | soft |
 | Metrics / report | `live-dashboard` + `light-terminal` | soft |
 | Process / tutorial | `linear-progression` + `clean-light-cards` | soft |
@@ -309,6 +315,6 @@ first-time setup, or ask "reconfigure baoyu-infographic-motion preferences".
 - `references/html-contract.md` — page structure, `<body>` settings, rules
 - `references/motion-primitives.md` — every `data-*` primitive
 - `references/sfx.md` — sound profiles and cues
-- `references/layouts/<layout>.md` — 33 layouts with tested skeletons
+- `references/layouts/<layout>.md` — 36 layouts with tested skeletons
 - `references/styles/<style>.md` — 49 styles
 - `references/analysis-framework.md`, `references/structured-content-template.md` — content analysis
