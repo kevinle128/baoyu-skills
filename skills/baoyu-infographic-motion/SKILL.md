@@ -1,6 +1,6 @@
 ---
 name: baoyu-infographic-motion
-description: Generates animated infographics as HTML/CSS/JS and exports them to MP4 (with synthesized sound effects), GIF and a PNG poster. Offers 36 motion layouts and 49 visual styles, with a deterministic frame-by-frame renderer so videos loop seamlessly. Use when the user asks for an "animated infographic", "motion infographic", "infographic video", "GIF infographic", "动态信息图", "信息图视频", "infographic động", or wants an existing infographic to move.
+description: Generates animated infographics as HTML/CSS/JS and exports them to MP4 (with synthesized sound effects), GIF and a PNG poster. Offers 39 motion layouts and 51 visual styles, with a deterministic frame-by-frame renderer so videos loop seamlessly. Use when the user asks for an "animated infographic", "motion infographic", "infographic video", "GIF infographic", "动态信息图", "信息图视频", "infographic động", or wants an existing infographic to move.
 version: 1.0.0
 metadata:
   openclaw:
@@ -74,7 +74,7 @@ equivalent). If skipped, state the assumed choices before building.
 | `--lang` | Language of on-screen text |
 | `--no-confirm` | Skip Step 4 |
 
-## Layout Gallery (36)
+## Layout Gallery (39)
 
 | Layout | Shows | Motion |
 |--------|-------|--------|
@@ -114,10 +114,13 @@ equivalent). If skipped, state the assumed choices before building.
 | `chart-figure` | Research figure: schematic + distribution charts + run charts with confidence bands (canvas `paper`) | Generation rail steps, distributions grow one generation at a time, run lines draw left to right with bands |
 | `context-window` | How one call's context is assembled: moves, budget, attention, compaction, cache, token sphere (canvas `1200x1500`) | Move chips step, budget bar re-splits, cache cells flicker, a particle sphere of tokens turns |
 | `cluster-radial` | 8-10 tools / projects in 4 role groups around one hub | Active node's dot swarm brightens hub-to-node, beam draws, active card swaps, list row tints |
+| `particle-sankey` | One gate splitting a stream into 4-6 outcomes by share (router, triage, moderation) | Particle cloud funnels into a gate and falls down share-weighted lanes into bins; active lane lights with a chip |
+| `rail-split` | One switch sends each job down an expensive or a cheap track (canvas `1600x1200`) | Lever flips, a labelled train runs the chosen branch with its cost tag; departures board and time bars update |
+| `radar-sweep` | 3-5 options scored on the same 5-6 axes (radar / spider chart) | Polygon morphs profile to profile, a scanner wedge lights each axis, value table ticks |
 
 Full definition + tested HTML skeleton: `references/layouts/<layout>.md`.
 
-## Style Gallery (49)
+## Style Gallery (51)
 
 | Style | Look |
 |-------|------|
@@ -134,6 +137,8 @@ Full definition + tested HTML skeleton: `references/layouts/<layout>.md`.
 | `telemetry-sim` | Dark simulation console, italic pink headline, white particles on thin wires, telemetry panels |
 | `highlighter-paper` | Printed handbook page, Baskerville caps, yellow highlighter marks, cards lift with a soft shadow |
 | `pastel-schematic` | White explainer diagram, solid concept pills, pastel line icons that glow when active, dashed arrows |
+| `tui-ascii` | Terminal UI drawn in characters: dashed box borders, bracketed values, window bar, blinking shell prompt |
+| `neon-outline` | Black board, every card outlined and glowing in its own neon colour |
 | `cream-pastel` | Notebook pastel |
 | `amber-fieldnote` | Warm field-notebook amber on dark |
 | `terminal-amber` | Amber terminal on black |
@@ -199,6 +204,11 @@ Details (palette, fonts, pairings, sound, GIF notes): `references/styles/<style>
 | Research result / experiment explainer | `chart-figure` + `white-paper` (or `highlighter-paper`) | soft |
 | Context / memory / RAG budget explainer | `context-window` + `cream-brutal` | soft |
 | Tool / project catalogue in 4 roles | `cluster-radial` + `paper-doc` (or `pastel-schematic`) | soft |
+| Router / triage split by share | `particle-sankey` + `telemetry-sim` | soft |
+| Two-path routing / cost split | `rail-split` + `risograph-pop` (or `subway-map`) | soft |
+| Compare options on the same criteria | `radar-sweep` + `pastel-schematic` (or `telemetry-sim`) | soft |
+| CLI / dev-tool / agent-in-terminal explainer | `card-pipeline` or `live-dashboard` + `tui-ascii` | soft |
+| Agent team / multi-service dashboard | `bento-grid` or `live-dashboard` + `neon-outline` | soft |
 | Business / consulting report | `funnel` or `comparison-matrix` + `consulting-report` | soft |
 | Metrics / report | `live-dashboard` + `light-terminal` | soft |
 | Process / tutorial | `linear-progression` + `clean-light-cards` | soft |
@@ -315,6 +325,6 @@ first-time setup, or ask "reconfigure baoyu-infographic-motion preferences".
 - `references/html-contract.md` — page structure, `<body>` settings, rules
 - `references/motion-primitives.md` — every `data-*` primitive
 - `references/sfx.md` — sound profiles and cues
-- `references/layouts/<layout>.md` — 36 layouts with tested skeletons
-- `references/styles/<style>.md` — 49 styles
+- `references/layouts/<layout>.md` — 39 layouts with tested skeletons
+- `references/styles/<style>.md` — 51 styles
 - `references/analysis-framework.md`, `references/structured-content-template.md` — content analysis

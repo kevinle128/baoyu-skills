@@ -1,0 +1,149 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&display=block");
+
+:root {
+  --bg: #1b1f27;
+  --bg2: #161a21;
+  --panel: #1f2430;
+  --panel2: #232937;
+  --ink: #e4e8ef;
+  --muted: #7a8394;
+  --line: #4a5366;
+  --grid: transparent;
+  --c1: #f0a24a;
+  --c2: #6fd3e0;
+  --c3: #b48cf2;
+  --c4: #f06a8a;
+  --c5: #8fd46a;
+  --c6: #e8d36a;
+  --accent: var(--c1);
+  --radius: 0px;
+  --bw: 1.5px;
+  --shadow: none;
+  --glow: 0.4;
+  --pad: 48px;
+  --gap: 18px;
+  --font-display: "JetBrains Mono", Menlo, monospace;
+  --font-body: "JetBrains Mono", Menlo, monospace;
+  --font-mono: "JetBrains Mono", Menlo, monospace;
+  --title-size: 40px;
+  --title-weight: 800;
+  --title-case: uppercase;
+  --title-track: 0.02em;
+  --label-case: none;
+  --code-bg: #161a21;
+  --code-ink: #cfd6e2;
+  --code-accent: #6fd3e0;
+  --sel-color: rgba(240, 162, 74, 0.25);
+}
+
+.mi-page, .mi-page.mi-grid-bg { background: var(--bg); padding-top: calc(var(--pad) + 30px); }
+.mi-page::before {
+  content: "~/app \2014  bash \2014  120\00D7 48";
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 38px;
+  line-height: 38px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+  background:
+    radial-gradient(circle at 24px 19px, #f06a5e 6px, transparent 6.5px),
+    radial-gradient(circle at 46px 19px, #e8c14a 6px, transparent 6.5px),
+    radial-gradient(circle at 68px 19px, #5fc46a 6px, transparent 6.5px),
+    #151920;
+  border-bottom: 1px solid #2c3240;
+}
+
+.mi-crumb { color: var(--muted); letter-spacing: 0.04em; }
+.mi-crumb::before { content: "# "; color: var(--c5); }
+.mi-meta { color: var(--c2); }
+.mi-meta::before { content: "["; color: var(--muted); }
+.mi-meta::after { content: "]"; color: var(--muted); }
+.mi-title { line-height: 1.12; }
+.mi-title em { color: var(--c1); }
+.mi-sub { color: var(--c2); font-size: 15px; letter-spacing: 0.02em; }
+.mi-sub .sep { color: var(--muted); }
+.mi-rule { height: 0; background: none; border-top: 1.5px dashed var(--line); }
+.mi-rule::after { top: -1.5px; height: 1.5px; background: var(--c1); }
+
+.mi-label { color: var(--muted); font-size: 13px; letter-spacing: 0.02em; }
+.mi-label::before { content: "\2502 "; color: var(--line); }
+.mi-label.acc { color: var(--c1); }
+.mi-card {
+  background: transparent;
+  border: var(--bw) dashed var(--line);
+  border-radius: 0;
+  padding: 20px;
+}
+.mi-card::before, .mi-card::after {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1;
+  color: color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 100%), var(--line));
+  background: var(--bg);
+  pointer-events: none;
+}
+.mi-card::before { content: "\250C"; left: -5px; top: -7px; }
+.mi-card::after { content: "\2518"; right: -5px; bottom: -7px; }
+[data-item].mi-card, .mi-card[data-item] {
+  border-style: dashed;
+  border-color: color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 100%), var(--line));
+  background: color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 7%), transparent);
+  box-shadow: none;
+  outline: calc(var(--on, 0) * 1.5px) solid var(--item, var(--accent));
+  outline-offset: calc(var(--bw) * -1);
+  color: color-mix(in oklab, var(--ink) calc(62% + var(--on, 0) * 38%), var(--muted));
+}
+.mi-card h3, .mi-h { font-size: 20px; font-weight: 700; letter-spacing: 0.02em; text-transform: none; color: var(--item, var(--ink)); }
+.mi-stat { background: transparent; border: var(--bw) dashed var(--line); border-radius: 0; }
+.mi-stat-v { font-weight: 700; color: var(--item, var(--c2)); }
+.mi-stat-v::before { content: "["; color: var(--muted); font-weight: 400; }
+.mi-stat-v::after { content: "]"; color: var(--muted); font-weight: 400; }
+.mi-stat-l { color: var(--muted); letter-spacing: 0.02em; }
+.mi-row { background: transparent; border: 0; border-bottom: 1px dashed #333a49; border-radius: 0; font-size: 15px; }
+.mi-row[data-item] { border-left: 2px solid color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 100%), transparent); }
+.mi-code { background: var(--code-bg); border: 1px dashed var(--line); border-radius: 0; }
+.mi-code-line { border-radius: 0; }
+.mi-edge { stroke: var(--line); stroke-width: 1.5; stroke-dasharray: 3 5; }
+.mi-beam { stroke-width: 2; stroke-dasharray: none; }
+.mi-beam-dot, .mi-packet { fill: var(--c1); filter: none; }
+.mi-bar { height: 10px; border-radius: 0; background: repeating-linear-gradient(90deg, #2e3544 0 6px, transparent 6px 8px); border: 0; }
+.mi-bar > i { border-radius: 0; background: repeating-linear-gradient(90deg, var(--item, var(--accent)) 0 6px, transparent 6px 8px); }
+.mi-ring { background: conic-gradient(var(--item, var(--accent)) calc(var(--value, 0) * 360deg), #2e3544 0); }
+.mi-chip, .mi-badge {
+  border: 1px solid color-mix(in oklab, var(--item, var(--accent)) 80%, transparent);
+  border-radius: 0;
+  background: transparent;
+  color: var(--item, var(--accent));
+  font-family: var(--font-mono);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.mi-chip::before, .mi-badge::before { content: "["; opacity: 0.6; }
+.mi-chip::after, .mi-badge::after { content: "]"; opacity: 0.6; }
+.mi-badge[data-flash] { background: color-mix(in oklab, var(--item, var(--accent)) calc(var(--flash, 0) * 35%), transparent); }
+.mi-hub { background: var(--bg); color: var(--c1); border: 1.5px solid var(--c1); border-radius: 0; font-family: var(--font-mono); }
+[data-grep-row] { background-color: color-mix(in oklab, var(--c1) calc(var(--match, 0) * 16%), transparent); }
+.mi-ants { --ants: color-mix(in oklab, var(--c1) calc(var(--on, 1) * 100%), transparent); }
+.mi-caret { background: var(--c1); }
+
+.mi-foot { color: var(--muted); font-size: 13px; letter-spacing: 0.02em; border-top: 1px dashed #333a49; padding-top: 12px; }
+.mi-foot .path { color: var(--c2); }
+.mi-foot .path::before { content: "~/app $ "; color: var(--c5); }
+.mi-foot .path::after {
+  content: "";
+  display: inline-block;
+  width: 9px;
+  height: 16px;
+  margin-left: 6px;
+  vertical-align: -3px;
+  background: var(--ink);
+  animation: tui-caret 1s steps(2, jump-none) infinite;
+}
+@keyframes tui-caret { 0% { opacity: 1; } 100% { opacity: 0; } }
+.mi-foot .mark { color: var(--c3); font-weight: 700; }

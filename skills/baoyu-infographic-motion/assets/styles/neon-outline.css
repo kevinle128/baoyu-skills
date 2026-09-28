@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;500;700&display=block");
+
+:root {
+  --bg: #050506;
+  --bg2: #0b0b0d;
+  --panel: #0c0c0f;
+  --panel2: #121216;
+  --ink: #f2f3f5;
+  --muted: #8a8f98;
+  --line: #24262c;
+  --grid: transparent;
+  --c1: #3ee07a;
+  --c2: #3aa0ff;
+  --c3: #ff8a2a;
+  --c4: #8f6bff;
+  --c5: #ff4d5e;
+  --c6: #ffc233;
+  --accent: var(--c1);
+  --radius: 10px;
+  --bw: 1.5px;
+  --shadow: none;
+  --glow: 1;
+  --pad: 44px;
+  --gap: 16px;
+  --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --font-body: "JetBrains Mono", Menlo, monospace;
+  --font-mono: "JetBrains Mono", Menlo, monospace;
+  --title-size: 50px;
+  --title-weight: 700;
+  --title-case: none;
+  --title-track: -0.02em;
+  --label-case: uppercase;
+  --code-bg: #0e0f13;
+  --code-ink: #d9dde4;
+  --code-accent: #3ee07a;
+  --sel-color: rgba(62, 224, 122, 0.22);
+}
+
+.mi-page, .mi-page.mi-grid-bg { background: var(--bg); }
+.mi-crumb { color: var(--muted); letter-spacing: 0.14em; font-size: 13px; }
+.mi-meta { color: var(--muted); font-size: 13px; }
+.mi-title em { font-style: normal; color: var(--accent); text-shadow: 0 0 18px color-mix(in oklab, var(--accent) 55%, transparent); }
+.mi-sub { color: var(--muted); font-size: 14px; letter-spacing: 0.08em; }
+.mi-sub .sep { color: #4a4e56; }
+.mi-rule { height: 1px; background: var(--line); }
+.mi-rule::after { top: 0; height: 1px; background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+
+.mi-label { color: var(--muted); letter-spacing: 0.14em; font-size: 12px; }
+.mi-label.acc { color: var(--item, var(--accent)); }
+.mi-card,
+.mi-card[data-item],
+[data-item].mi-card {
+  background: color-mix(in oklab, var(--item, var(--accent)) calc(4% + var(--on, 0) * 6%), var(--panel));
+  border: var(--bw) solid color-mix(in oklab, var(--item, var(--accent)) calc(55% + var(--on, 0) * 45%), var(--bg));
+  box-shadow:
+    0 0 calc(6px + var(--on, 0) * 26px) color-mix(in oklab, var(--item, var(--accent)) calc(22% + var(--on, 0) * 38%), transparent),
+    inset 0 0 calc(var(--on, 0) * 22px) color-mix(in oklab, var(--item, var(--accent)) 14%, transparent);
+}
+.mi-card h3, .mi-h { font-size: 24px; letter-spacing: -0.01em; }
+.mi-stat {
+  background: color-mix(in oklab, var(--item, var(--accent)) 5%, var(--panel));
+  border: var(--bw) solid color-mix(in oklab, var(--item, var(--accent)) 60%, var(--bg));
+  box-shadow: 0 0 10px color-mix(in oklab, var(--item, var(--accent)) 22%, transparent);
+}
+.mi-stat-v { font-family: var(--font-display); text-shadow: 0 0 14px color-mix(in oklab, var(--item, var(--accent)) 45%, transparent); }
+.mi-stat-l { color: var(--muted); letter-spacing: 0.12em; font-size: 12px; }
+.mi-row { background: var(--panel2); border: 1px solid var(--line); }
+.mi-row[data-item] { border-left-color: var(--item, var(--accent)); background: color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 14%), var(--panel2)); }
+.mi-code { background: var(--code-bg); border: 1px solid var(--line); }
+.mi-edge { stroke: #2c2f36; stroke-width: 1.5; }
+.mi-beam { stroke-width: 2.5; filter: drop-shadow(0 0 4px var(--item, var(--accent))); }
+.mi-packet { fill: var(--item, var(--accent)); filter: drop-shadow(0 0 5px var(--item, var(--accent))); }
+.mi-bar { background: #1a1c21; height: 8px; }
+.mi-bar > i { background: linear-gradient(90deg, color-mix(in oklab, var(--item, var(--accent)) 55%, transparent), var(--item, var(--accent))); box-shadow: 0 0 8px var(--item, var(--accent)); }
+.mi-ring { background: conic-gradient(var(--item, var(--accent)) calc(var(--value, 0) * 360deg), #1a1c21 0); filter: drop-shadow(0 0 6px color-mix(in oklab, var(--item, var(--accent)) 60%, transparent)); }
+.mi-chip, .mi-badge {
+  border: 1px solid var(--item, var(--accent));
+  background: color-mix(in oklab, var(--item, var(--accent)) 10%, transparent);
+  color: var(--item, var(--accent));
+  box-shadow: 0 0 8px color-mix(in oklab, var(--item, var(--accent)) 35%, transparent);
+}
+.mi-badge[data-flash] { background: color-mix(in oklab, var(--item, var(--accent)) calc(10% + var(--flash, 0) * 80%), transparent); color: color-mix(in oklab, var(--bg) calc(var(--flash, 0) * 100%), var(--item, var(--accent))); }
+.mi-hub { background: var(--panel); border: 1.5px solid var(--accent); color: var(--ink); }
+[data-grep-row] { background-color: color-mix(in oklab, var(--item, var(--accent)) calc(var(--match, 0) * 16%), transparent); }
+.mi-caret { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+
+.mi-foot { color: var(--muted); letter-spacing: 0.12em; font-size: 12px; }
+.mi-foot .path { color: var(--accent); }
+.mi-foot .mark { color: var(--ink); }
