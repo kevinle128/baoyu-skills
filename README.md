@@ -313,7 +313,7 @@ Generate professional infographics with 21 layout types and 21 visual styles. An
 
 #### baoyu-infographic-motion
 
-Animated infographics built with HTML/CSS/JS and exported to MP4 (with synthesized sound effects), GIF and a PNG poster. 25 motion layouts × 46 visual styles (including 10 eye-catching social styles and 10 bold, high-contrast styles). A deterministic frame-by-frame renderer in headless Chrome makes every video loop seamlessly; sound cues land on the exact frame of each highlight step. Requires Chrome and ffmpeg.
+Animated infographics built with HTML/CSS/JS and exported to MP4 (with synthesized sound effects), GIF and a PNG poster. 33 motion layouts × 49 visual styles (including 10 eye-catching social styles and 10 bold, high-contrast styles). A deterministic frame-by-frame renderer in headless Chrome makes every video loop seamlessly; sound cues land on the exact frame of each highlight step. Requires Chrome and ffmpeg.
 
 ```bash
 # Recommend layout × style × sound from content, then build and export
@@ -329,8 +329,8 @@ Animated infographics built with HTML/CSS/JS and exported to MP4 (with synthesiz
 **Options**:
 | Option | Description |
 |--------|-------------|
-| `--layout <name>` | Motion layout (25 options, e.g. `card-pipeline`, `orbit-panel`, `fan-in`, `live-dashboard`) |
-| `--style <name>` | Visual style (46 options, default: `light-dashboard`) |
+| `--layout <name>` | Motion layout (33 options, e.g. `card-pipeline`, `orbit-panel`, `fan-in`, `live-dashboard`) |
+| `--style <name>` | Visual style (49 options, default: `light-dashboard`) |
 | `--canvas <name>` | `portrait` 1080×1350 (default), `square`, `story` 1080×1920, `landscape`, `paper` 1200×1600 |
 | `--sfx <profile>` | `soft` (ticks + pad, default), `music` (beat on each step), `none` |
 | `--format <list>` | `mp4,gif,png` (default all) |

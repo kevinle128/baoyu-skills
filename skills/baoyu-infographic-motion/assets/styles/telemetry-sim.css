@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,800;1,800;1,900&family=JetBrains+Mono:wght@400;500;700&display=block");
+
+:root {
+  --bg: #111418;
+  --bg2: #0c0e11;
+  --panel: #171b21;
+  --panel2: #1d222a;
+  --ink: #eef0f3;
+  --muted: #7d8591;
+  --line: #2a3039;
+  --grid: transparent;
+  --c1: #ff2d6f;
+  --c2: #4f86e8;
+  --c3: #5fbf6a;
+  --c4: #e0a93a;
+  --c5: #a08bf0;
+  --c6: #9aa3ae;
+  --accent: var(--c1);
+  --radius: 6px;
+  --bw: 1px;
+  --shadow: none;
+  --glow: 1;
+  --pad: 44px;
+  --gap: 16px;
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body: "JetBrains Mono", Menlo, monospace;
+  --font-mono: "JetBrains Mono", Menlo, monospace;
+  --title-size: 50px;
+  --title-weight: 900;
+  --title-case: uppercase;
+  --title-track: -0.01em;
+  --label-case: uppercase;
+  --code-bg: #0c0e11;
+  --code-ink: #cfd5dd;
+  --code-accent: #ff2d6f;
+  --sel-color: rgba(255, 45, 111, 0.22);
+}
+
+.mi-page, .mi-page.mi-grid-bg { background: var(--bg); }
+.mi-page::after {
+  content: "SIMULATION \00B7  ILLUSTRATIVE VALUES";
+  position: absolute;
+  left: var(--pad);
+  bottom: 14px;
+  z-index: 0;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: #4a515c;
+  pointer-events: none;
+}
+
+.mi-title { font-style: italic; line-height: 1.02; }
+.mi-title em { color: var(--c1); font-style: italic; }
+.mi-crumb, .mi-sub { color: var(--muted); letter-spacing: 0.14em; font-size: 13px; text-transform: uppercase; }
+.mi-meta { color: var(--ink); font-family: var(--font-mono); }
+.mi-meta::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--c1);
+  vertical-align: middle;
+  animation: ts-live 1s steps(2, jump-none) infinite;
+}
+@keyframes ts-live { 0% { opacity: 1; } 100% { opacity: 0.2; } }
+.mi-rule { height: 1px; background: var(--line); }
+.mi-rule::after { top: 0; height: 1px; background: var(--c1); }
+
+.mi-label { color: var(--muted); letter-spacing: 0.14em; font-size: 12px; }
+.mi-label::before { content: "// "; color: #4a515c; }
+.mi-label.acc { color: var(--c1); }
+.mi-card { background: var(--panel); border: 1px solid var(--line); }
+[data-item].mi-card {
+  border-color: color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 100%), var(--line));
+  box-shadow: 0 0 calc(var(--on, 0) * 18px) color-mix(in oklab, var(--item, var(--accent)) 45%, transparent);
+}
+.mi-card h3, .mi-h { font-family: var(--font-mono); font-size: 16px; font-weight: 700; letter-spacing: 0.02em; text-transform: none; }
+.mi-stat { background: transparent; border: 0; border-left: 1px solid var(--line); border-radius: 0; }
+.mi-stat-v { font-family: var(--font-mono); font-weight: 700; font-variant-numeric: tabular-nums; }
+.mi-stat-l { color: var(--muted); letter-spacing: 0.14em; font-size: 11px; }
+.mi-row { background: transparent; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; }
+.mi-row[data-item] { background: color-mix(in oklab, var(--item, var(--accent)) calc(var(--on, 0) * 10%), transparent); }
+.mi-code { background: var(--code-bg); border: 1px solid var(--line); }
+.mi-edge { stroke: rgba(210, 216, 224, 0.22); stroke-width: 1; }
+.mi-beam { stroke-width: 1.6; }
+.mi-beam-dot, .mi-packet { fill: #f4f6f8; filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.7)); }
+.mi-bar { background: #242a33; border: 0; height: 6px; border-radius: 1px; }
+.mi-ring { background: conic-gradient(var(--item, var(--ink)) calc(var(--value, 0) * 360deg), #262c35 0); }
+.mi-chip, .mi-badge {
+  border: 1px solid color-mix(in oklab, var(--item, var(--accent)) 80%, transparent);
+  background: color-mix(in oklab, var(--item, var(--accent)) 12%, transparent);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  letter-spacing: 0.06em;
+}
+.mi-badge[data-flash] { background: color-mix(in oklab, var(--item, var(--accent)) calc(12% + var(--flash, 0) * 70%), transparent); }
+.mi-hub {
+  background: var(--panel);
+  color: var(--c1);
+  border: 1.5px solid var(--c1);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 900;
+  box-shadow: 0 0 0 calc(8px + var(--pulse, 0) * 10px) rgba(255, 45, 111, 0.08), 0 0 calc(18px + var(--pulse, 0) * 18px) rgba(255, 45, 111, 0.35);
+}
+[data-grep-row] { background-color: color-mix(in oklab, var(--c1) calc(var(--match, 0) * 14%), transparent); }
+.mi-ants { --ants: color-mix(in oklab, var(--c1) calc(var(--on, 1) * 100%), transparent); }
+.mi-caret { background: var(--c1); }
+
+.mi-foot { color: var(--muted); letter-spacing: 0.12em; font-size: 12px; }
+.mi-foot .path { color: var(--muted); }
+.mi-foot .mark { color: var(--ink); font-weight: 700; }

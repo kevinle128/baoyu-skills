@@ -1,6 +1,6 @@
 ---
 name: baoyu-infographic-motion
-description: Generates animated infographics as HTML/CSS/JS and exports them to MP4 (with synthesized sound effects), GIF and a PNG poster. Offers 25 motion layouts and 46 visual styles, with a deterministic frame-by-frame renderer so videos loop seamlessly. Use when the user asks for an "animated infographic", "motion infographic", "infographic video", "GIF infographic", "动态信息图", "信息图视频", "infographic động", or wants an existing infographic to move.
+description: Generates animated infographics as HTML/CSS/JS and exports them to MP4 (with synthesized sound effects), GIF and a PNG poster. Offers 33 motion layouts and 49 visual styles, with a deterministic frame-by-frame renderer so videos loop seamlessly. Use when the user asks for an "animated infographic", "motion infographic", "infographic video", "GIF infographic", "动态信息图", "信息图视频", "infographic động", or wants an existing infographic to move.
 version: 1.0.0
 metadata:
   openclaw:
@@ -74,7 +74,7 @@ equivalent). If skipped, state the assumed choices before building.
 | `--lang` | Language of on-screen text |
 | `--no-confirm` | Skip Step 4 |
 
-## Layout Gallery (25)
+## Layout Gallery (33)
 
 | Layout | Shows | Motion |
 |--------|-------|--------|
@@ -103,10 +103,18 @@ equivalent). If skipped, state the assumed choices before building.
 | `ranked-leaderboard` | Top-N list with values (canvas `paper`) | Grep filter by track, scattered spotlight, terminal types `git clone`, star counts scramble |
 | `swarm-fanout` | Coordinator → many parallel agents → lead → report (canvas `1600x1200`, builds up from empty) | Lane-by-lane dot clouds light up, packets converge, live terminal + agent tree |
 | `paper-page` | Research paper / white paper page (canvas `paper`) | Decision diamonds flip, chip queries the active node, matching text phrase, code line and table row highlight |
+| `lane-stream` | One router dispatching to 5-7 parallel backends (gateways, harnesses, model routers) | Router beam picks one lane at a time, dot/dash streams scroll in every lane, bar meters and x/s rates jitter |
+| `hub-picker` | One component picks 1 of 4-6 candidates over several rounds (canvas `1200x1200`) | Particles fly out to every candidate, winner gets an accent border + beam, context swaps per round |
+| `loop-track` | Repeating work loop with decision gates around each step (agent / router loop) | Particles circle a bundled-wire track, hub beams to each station, gates flash result chips |
+| `decision-feed` | Agent run as a feed of scored decisions with typed results and savings (canvas `landscape`) | Feed scrolls one card per step, panel types the JSON result and ticks checks, cost multiplier climbs |
+| `flow-columns` | 3 approaches side by side, each with its own step-by-step flow ("A vs B vs C") | All three flows light their icons in parallel with dots on dashed arrows; master focus moves column to column |
+| `evolution-rows` | One idea growing through 3-5 levels (script → workflow → agent → agent system) | Every row runs its own icon cycle; master focus steps down the rows; loop-back arrows carry a packet |
+| `sector-fan` | Ecosystem / stack map: 5-6 categories fanned from a hub, 3-4 items each (canvas `landscape`) | Wedge fills in turn, beam runs the right-angle trunk, items lift; packets flow on all trunks |
+| `pattern-grid` | 9-15 techniques as a cheat-sheet grid (algorithm patterns, data-structure ops) | Every tile loops its own mini animation (pointers, window, stack, tree, DP fill); spotlight + caption step through tiles |
 
 Full definition + tested HTML skeleton: `references/layouts/<layout>.md`.
 
-## Style Gallery (46)
+## Style Gallery (49)
 
 | Style | Look |
 |-------|------|
@@ -120,6 +128,9 @@ Full definition + tested HTML skeleton: `references/layouts/<layout>.md`.
 | `ide-slate` | Dark code editor, mono, gold accent, selection highlights |
 | `github-dark` | GitHub README as a poster, huge Inter headline |
 | `editorial-ops` | Light ops newsroom, serif headline, periwinkle, marquee band |
+| `telemetry-sim` | Dark simulation console, italic pink headline, white particles on thin wires, telemetry panels |
+| `highlighter-paper` | Printed handbook page, Baskerville caps, yellow highlighter marks, cards lift with a soft shadow |
+| `pastel-schematic` | White explainer diagram, solid concept pills, pastel line icons that glow when active, dashed arrows |
 | `cream-pastel` | Notebook pastel |
 | `amber-fieldnote` | Warm field-notebook amber on dark |
 | `terminal-amber` | Amber terminal on black |
@@ -173,6 +184,15 @@ Details (palette, fonts, pairings, sound, GIF notes): `references/styles/<style>
 | Prompt, config, codebase tour | `source-listing` + `ide-slate` | soft |
 | Top repos / tools list | `ranked-leaderboard` + `github-dark` | music |
 | Multi-agent system | `swarm-fanout` + `editorial-ops` | music |
+| Router / gateway / harness pool | `lane-stream` + `telemetry-sim` | soft |
+| Router / agent picks one option | `hub-picker` + `telemetry-sim` | soft |
+| Agent loop with decision gates | `loop-track` + `telemetry-sim` | soft |
+| Router inside an agent loop / cost savings | `decision-feed` + `telemetry-sim` | soft |
+| Handbook / how-to note | `card-pipeline` or `paper-page` + `highlighter-paper` | soft |
+| X vs Y vs Z, how each works | `flow-columns` + `pastel-schematic` | soft |
+| Levels of maturity / complexity | `evolution-rows` + `pastel-schematic` | soft |
+| Ecosystem / stack map | `sector-fan` + `pastel-schematic` (or `paper-doc`) | soft |
+| Algorithm / technique cheat sheet | `pattern-grid` + `midnight-grid` | soft |
 | Business / consulting report | `funnel` or `comparison-matrix` + `consulting-report` | soft |
 | Metrics / report | `live-dashboard` + `light-terminal` | soft |
 | Process / tutorial | `linear-progression` + `clean-light-cards` | soft |
@@ -289,6 +309,6 @@ first-time setup, or ask "reconfigure baoyu-infographic-motion preferences".
 - `references/html-contract.md` — page structure, `<body>` settings, rules
 - `references/motion-primitives.md` — every `data-*` primitive
 - `references/sfx.md` — sound profiles and cues
-- `references/layouts/<layout>.md` — 25 layouts with tested skeletons
-- `references/styles/<style>.md` — 46 styles
+- `references/layouts/<layout>.md` — 33 layouts with tested skeletons
+- `references/styles/<style>.md` — 49 styles
 - `references/analysis-framework.md`, `references/structured-content-template.md` — content analysis
